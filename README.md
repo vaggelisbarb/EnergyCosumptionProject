@@ -1,4 +1,4 @@
-# Energy Coνsumption Project
+# Energy Consumption Project
 <Software Development Assignment>
 
 Developers :
