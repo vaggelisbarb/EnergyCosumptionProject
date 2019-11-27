@@ -1,7 +1,7 @@
 # Energy Consumption Project
-# **Software Development Assignment**
+*Software Development Assignment*
 
-[![Build Status](https://travis-ci.org/vaggelisbarb/EnergyConsumptionProject.svg?branch=master)](https://travis-ci.org/vaggelisbarb/EnergyConsumptionProject)
+[![Build Status](https://travis-ci.com/vaggelisbarb/EnergyCosumptionProject.svg?token=ESappheAX3koqXFDdBp8&branch=master)](https://travis-ci.com/vaggelisbarb/EnergyCosumptionProject)
 
 # Developers :
 # Evangelos Barbalias 2766 , 
