@@ -1,36 +1,22 @@
-/**
- * 
- */
 package datamodel;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
-/**
- * @author vaggelisbarb
- *
- */
-public class Kitchen extends ConsumptionResult{
+public class Kitchen{	
+	private ArrayList<MeasurementRecord> kitchenRecords;
+
 	
-	private ArrayList<MeasurementRecord> KichenRecords;
-	
-	
-	/**
-	 * 
-	 */
 	public Kitchen() {
 		super();
+		kitchenRecords = new ArrayList<MeasurementRecord>();
 	}
 
-	/**
-	 * @param kichenRecords
-	 */
-	public Kitchen(ArrayList<MeasurementRecord> KichenRecords) {
+	public Kitchen(ArrayList<MeasurementRecord> kitchenRecords) {
 		super();
-		this.KichenRecords = KichenRecords;
+		this.kitchenRecords = kitchenRecords;
 	}
 
-	public int add(String timeUnit, MeasurementRecord record) {
-		return 0;
-	}
+	
+	
 }

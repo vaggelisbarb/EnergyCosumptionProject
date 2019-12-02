@@ -1,36 +1,21 @@
-/**
- * 
- */
 package datamodel;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
-/**
- * @author vaggelisbarb
- *
- */
-public class AC extends ConsumptionResult{
-	private ArrayList<MeasurementRecord> AcRec;
-	
-	/**
-	 * @param acRec
-	 */
-	public AC(ArrayList<MeasurementRecord> acRec) {
-		super();
-		AcRec = acRec;
-	}
+public class AC {
+	private ArrayList<MeasurementRecord> AcRecords;
 
-	
-	/**
-	 * 
-	 */
+
 	public AC() {
 		super();
+		AcRecords = new ArrayList<MeasurementRecord>();
 	}
 
-
-	public int add(String timeUnit, MeasurementRecord record) {
-		return 0;
+	public AC(ArrayList<MeasurementRecord> acRecords) {
+		super();
+		AcRecords = acRecords;
 	}
+	
 	
 }

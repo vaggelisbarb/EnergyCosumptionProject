@@ -1,35 +1,22 @@
-/**
- * 
- */
 package datamodel;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
-/**
- * @author vaggelisbarb
- *
- */
-public class Laundry extends ConsumptionResult{
-	private ArrayList<MeasurementRecord> LaundryRec;
+public class Laundry{
+	private ArrayList<MeasurementRecord> laundryRecords;
 	
 	
-	
-	/**
-	 * 
-	 */
 	public Laundry() {
 		super();
+		laundryRecords = new ArrayList<MeasurementRecord>(); 
 	}
 
-	/**
-	 * @param laundryRec
-	 */
-	public Laundry(ArrayList<MeasurementRecord> LaundryRec) {
+	public Laundry(ArrayList<MeasurementRecord> laundryRecords) {
 		super();
-		this.LaundryRec = LaundryRec;
+		this.laundryRecords = laundryRecords;
 	}
 
-	public int add(String timeUnit, MeasurementRecord record) {
-		return 0;
-	}
+
+	
 }
