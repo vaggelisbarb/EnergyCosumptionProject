@@ -5,12 +5,10 @@ package mainengine;
 
 import java.util.ArrayList;
 
-import datamodel.AC;
 import datamodel.IResult;
-import datamodel.Kitchen;
-import datamodel.Laundry;
 import datamodel.MeasurementRecord;
 import datamodel.ResultFactory;
+import datamodel.ResultManager;
 import reporting.IResultReporter;
 import reporting.TypeReportFactory;
 import timeaggregation.AggregatorFactory;
@@ -29,9 +27,7 @@ import dataload.ILoader;
 
 public class MainEngine implements IMainEngine {
 	
-	private IResult kitchenRec;
-	private IResult laundryRec;
-	private IResult acRec;
+	private IResult resultmanager;
 	private ResultFactory resultfactory;
 	
 	private ILoader dataloader;
@@ -45,9 +41,7 @@ public class MainEngine implements IMainEngine {
 	public MainEngine() {
 		super();
 		resultfactory = new ResultFactory();
-		kitchenRec = resultfactory.constructResult("Kitchen");
-		laundryRec = resultfactory.constructResult("Laundry");
-		acRec = resultfactory.constructResult("AC");
+		resultmanager = resultfactory.constructResult("ResultManager");
 		dataloaderfactory = new DataLoaderFactory();
 		dataloader = dataloaderfactory.createDataLoader("DataLoader","/home/vaggelisbarb/Eclipse_Projects/2019_2020_<2766>_<2784>_<2821>/Resources/TestInput/household_preview.txt");
 		aggregatorfactory = new AggregatorFactory();
