@@ -23,7 +23,7 @@ import java.awt.event.MouseEvent;
 
 public class MainApplicationGui {
 
-	private JFrame frame;
+	private JFrame frmSoftwareDevelopment;
 
 	/**
 	 * Launch the application.
@@ -33,7 +33,7 @@ public class MainApplicationGui {
 			public void run() {
 				try {
 					MainApplicationGui window = new MainApplicationGui();
-					window.frame.setVisible(true);
+					window.frmSoftwareDevelopment.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -52,10 +52,13 @@ public class MainApplicationGui {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(150, 150, 614, 300);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		frmSoftwareDevelopment = new JFrame();
+		frmSoftwareDevelopment.setTitle("Software Development");
+		frmSoftwareDevelopment.setFont(new Font("League Spartan Semibold", Font.PLAIN, 17));
+		frmSoftwareDevelopment.setForeground(new Color(0, 204, 51));
+		frmSoftwareDevelopment.setBounds(150, 150, 614, 300);
+		frmSoftwareDevelopment.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmSoftwareDevelopment.getContentPane().setLayout(null);
 		
 		JButton button = new JButton("Load File");
 		button.setToolTipText("Click to load a file");
@@ -70,7 +73,7 @@ public class MainApplicationGui {
 		button.setForeground(new Color(204, 0, 0));
 		button.setFont(new Font("Manjari Bold", Font.BOLD, 13));
 		button.setBounds(130, 84, 338, 32);
-		frame.getContentPane().add(button);
+		frmSoftwareDevelopment.getContentPane().add(button);
 		
 		JButton button_1 = new JButton("Create Statistics");
 		button_1.addMouseListener(new MouseAdapter() {
@@ -85,7 +88,7 @@ public class MainApplicationGui {
 		button_1.setForeground(new Color(204, 0, 0));
 		button_1.setFont(new Font("Manjari Bold", Font.BOLD, 13));
 		button_1.setBounds(130, 128, 338, 32);
-		frame.getContentPane().add(button_1);
+		frmSoftwareDevelopment.getContentPane().add(button_1);
 		
 		JButton button_2 = new JButton("Report History");
 		button_2.setToolTipText("View Report History");
@@ -93,7 +96,7 @@ public class MainApplicationGui {
 		button_2.setForeground(new Color(204, 0, 0));
 		button_2.setFont(new Font("Manjari Bold", Font.BOLD, 13));
 		button_2.setBounds(12, 230, 142, 29);
-		frame.getContentPane().add(button_2);
+		frmSoftwareDevelopment.getContentPane().add(button_2);
 		
 		JButton button_3 = new JButton("Exit");
 		button_3.setToolTipText("Click to exit the programm");
@@ -105,7 +108,7 @@ public class MainApplicationGui {
 		button_3.setForeground(new Color(204, 0, 0));
 		button_3.setFont(new Font("Manjari Bold", Font.BOLD, 13));
 		button_3.setBounds(460, 230, 142, 29);
-		frame.getContentPane().add(button_3);
+		frmSoftwareDevelopment.getContentPane().add(button_3);
 		
 		JButton btnGenerateReport = new JButton("Generate Report");
 		btnGenerateReport.setToolTipText("Click to generate a report");
@@ -113,18 +116,18 @@ public class MainApplicationGui {
 		btnGenerateReport.setForeground(new Color(204, 0, 0));
 		btnGenerateReport.setFont(new Font("Manjari Bold", Font.BOLD, 13));
 		btnGenerateReport.setBounds(130, 172, 338, 32);
-		frame.getContentPane().add(btnGenerateReport);
+		frmSoftwareDevelopment.getContentPane().add(btnGenerateReport);
 		
 		JLabel lblEnergyConsumptionProject = new JLabel("ENERGY CONSUMPTION PROJECT");
 		lblEnergyConsumptionProject.setFont(new Font("League Spartan Semibold", Font.BOLD, 20));
 		lblEnergyConsumptionProject.setForeground(new Color(255, 51, 0));
 		lblEnergyConsumptionProject.setBounds(164, 2, 273, 70);
-		frame.getContentPane().add(lblEnergyConsumptionProject);
+		frmSoftwareDevelopment.getContentPane().add(lblEnergyConsumptionProject);
 		
 		JLabel label = new JLabel("");
 		label.setIcon(new ImageIcon("/home/vaggelisbarb/Λήψεις/rsz_abstract-technology-particle-background_52683-25766.jpg"));
 		label.setBounds(0, 0, 614, 274);
-		frame.getContentPane().add(label);
+		frmSoftwareDevelopment.getContentPane().add(label);
 		Image image = new ImageIcon(this.getClass().getResource("/energycons.jpeg")).getImage();
 	}
 }
