@@ -30,11 +30,14 @@ public class MainEngine implements IMainEngine {
 	private IResult resultmanager;
 	private ResultFactory resultfactory;
 	
-	private ILoader dataloader;
+	private ILoader<MeasurementRecord> dataloader;
 	private DataLoaderFactory dataloaderfactory;
 	
 	private AggregatorFactory aggregatorfactory;
 	private IAggregator aggregator; 
+	
+	private IResultReporter reporter;
+	private TypeReportFactory typereportfactory;
 	
 	
 	
@@ -43,7 +46,7 @@ public class MainEngine implements IMainEngine {
 		resultfactory = new ResultFactory();
 		resultmanager = resultfactory.constructResult("ResultManager");
 		dataloaderfactory = new DataLoaderFactory();
-		dataloader = dataloaderfactory.createDataLoader("DataLoader","/home/vaggelisbarb/Eclipse_Projects/2019_2020_<2766>_<2784>_<2821>/Resources/TestInput/household_preview.txt");
+		dataloader = dataloaderfactory.createDataLoader("/home/vaggelisbarb/Eclipse_Projects/2019_2020_<2766>_<2784>_<2821>/Resources/TestInput/household_preview.txt");
 		aggregatorfactory = new AggregatorFactory();
 		aggregator = aggregatorfactory.createAggregator("Aggregator");
 	}
@@ -51,8 +54,7 @@ public class MainEngine implements IMainEngine {
 	@Override
 	public int loadData(String fileName, String delimeter, Boolean hasHeaderLine, int numFields,
 			ArrayList<MeasurementRecord> objCollection) {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.dataloader.load(fileName, delimeter, hasHeaderLine, numFields, objCollection);
 	}
 	
 	@Override
