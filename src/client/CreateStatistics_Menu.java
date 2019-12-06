@@ -17,6 +17,9 @@ import javax.swing.JList;
 import javax.swing.JComboBox;
 import java.awt.Choice;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
+import java.awt.Toolkit;
+import javax.swing.JScrollPane;
+import javax.swing.JDesktopPane;
 
 public class CreateStatistics_Menu {
 
@@ -86,13 +89,13 @@ public class CreateStatistics_Menu {
 		lblCreateStatisticsMenu.setBounds(131, 12, 189, 28);
 		frmStats.getContentPane().add(lblCreateStatisticsMenu);
 		
-		JSplitPane splitPane = new JSplitPane();
-		splitPane.setOrientation(JSplitPane.VERTICAL_SPLIT);
-		splitPane.setBounds(28, 92, 170, 68);
-		frmStats.getContentPane().add(splitPane);
+		JSplitPane aggFunction_split = new JSplitPane();
+		aggFunction_split.setOrientation(JSplitPane.VERTICAL_SPLIT);
+		aggFunction_split.setBounds(28, 92, 170, 68);
+		frmStats.getContentPane().add(aggFunction_split);
 		
 		JRadioButton Average_btn = new JRadioButton("Average");
-		splitPane.setLeftComponent(Average_btn);
+		aggFunction_split.setLeftComponent(Average_btn);
 		Average_btn.setForeground(new Color(204, 0, 0));
 		Average_btn.setFont(new Font("Manjari Bold", Font.BOLD, 14));
 		Average_btn.setHorizontalAlignment(SwingConstants.CENTER);
@@ -101,48 +104,79 @@ public class CreateStatistics_Menu {
 		Sum_btn.setHorizontalAlignment(SwingConstants.CENTER);
 		Sum_btn.setForeground(new Color(204, 0, 0));
 		Sum_btn.setFont(new Font("Manjari Bold", Font.BOLD, 14));
-		splitPane.setRightComponent(Sum_btn);		
+		aggFunction_split.setRightComponent(Sum_btn);		
 		
 		
-		JComboBox AfterSelect_box = new JComboBox();
-		AfterSelect_box.setToolTipText("It's your choise now");
-		AfterSelect_box.setVisible(false);
-		AfterSelect_box.setForeground(new Color(204, 0, 0));
-		AfterSelect_box.setFont(new Font("Manjari Bold", Font.BOLD, 13));
-		AfterSelect_box.setBounds(262, 136, 149, 24);
-		frmStats.getContentPane().add(AfterSelect_box);
+		
 
 		
 		JComboBox timeUnit_combobox = new JComboBox(timeUnitOptions);
 		timeUnit_combobox.addActionListener(new ActionListener() {
-			String isSelected = (String) timeUnit_combobox.getSelectedItem();
+			int isSelected = timeUnit_combobox.getSelectedIndex();
 			public void actionPerformed(ActionEvent arg0) {
-				if(isSelected.equals("Season")){
-					AfterSelect_box.removeAllItems();
-					AfterSelect_box.setVisible(true);
-					AfterSelect_box.addItem(seasonOption[0]);
-					AfterSelect_box.addItem(seasonOption[1]);
-					AfterSelect_box.addItem(seasonOption[2]);
-					AfterSelect_box.addItem(seasonOption[3]);
-				}else if(isSelected.equals("Month")){
-					AfterSelect_box.removeAllItems();
-					AfterSelect_box.setVisible(true);
-					AfterSelect_box.addItem(monthOption);
-				}if(isSelected.equals("WeekDay")){
-					AfterSelect_box.removeAllItems();
-					AfterSelect_box.setVisible(true);
-					AfterSelect_box.addItem(weekdayOption);	
-				}if(isSelected.equals("Day Period")){
-					AfterSelect_box.removeAllItems();
-					AfterSelect_box.setVisible(true);
-					AfterSelect_box.addItem(dayPeriodOption);
+				if(isSelected == 0){
+					JComboBox AfterSelect_box = new JComboBox(seasonOption);
+					AfterSelect_box.setToolTipText("It's your choise now");
+					AfterSelect_box.setSelectedIndex(-1);
+					AfterSelect_box.setForeground(new Color(204, 0, 0));
+					AfterSelect_box.setFont(new Font("Manjari Bold", Font.BOLD, 13));
+					AfterSelect_box.setBounds(262, 136, 149, 24);
+					frmStats.getContentPane().add(AfterSelect_box);
+				}else if(isSelected == 1){
+					JComboBox AfterSelect_box = new JComboBox(monthOption);
+					AfterSelect_box.setToolTipText("It's your choise now");
+					AfterSelect_box.setSelectedIndex(-1);
+					AfterSelect_box.setForeground(new Color(204, 0, 0));
+					AfterSelect_box.setFont(new Font("Manjari Bold", Font.BOLD, 13));
+					AfterSelect_box.setBounds(262, 136, 149, 24);
+					frmStats.getContentPane().add(AfterSelect_box);
+					/*AfterSelect_box.addItem(monthOption[0]);
+					AfterSelect_box.addItem(monthOption[1]);
+					AfterSelect_box.addItem(monthOption[2]);
+					AfterSelect_box.addItem(monthOption[3]);
+					AfterSelect_box.addItem(monthOption[4]);
+					AfterSelect_box.addItem(monthOption[5]);
+					AfterSelect_box.addItem(monthOption[6]);
+					AfterSelect_box.addItem(monthOption[7]);
+					AfterSelect_box.addItem(monthOption[8]);
+					AfterSelect_box.addItem(monthOption[9]);
+					AfterSelect_box.addItem(monthOption[10]);
+					AfterSelect_box.addItem(monthOption[11]);  */
+				}if(isSelected == 2){
+					JComboBox AfterSelect_box = new JComboBox(weekdayOption);
+					AfterSelect_box.setToolTipText("It's your choise now");
+					AfterSelect_box.setSelectedIndex(-1);
+					AfterSelect_box.setForeground(new Color(204, 0, 0));
+					AfterSelect_box.setFont(new Font("Manjari Bold", Font.BOLD, 13));
+					AfterSelect_box.setBounds(262, 136, 149, 24);
+					frmStats.getContentPane().add(AfterSelect_box);
+					/*AfterSelect_box.addItem(weekdayOption[0]);
+					AfterSelect_box.addItem(weekdayOption[1]);
+					AfterSelect_box.addItem(weekdayOption[2]);
+					AfterSelect_box.addItem(weekdayOption[3]);
+					AfterSelect_box.addItem(weekdayOption[4]);
+					AfterSelect_box.addItem(weekdayOption[5]);
+					AfterSelect_box.addItem(weekdayOption[6]);  */
+					
+				}if(isSelected == 3){
+					JComboBox AfterSelect_box = new JComboBox(dayPeriodOption);
+					AfterSelect_box.setToolTipText("It's your choise now");
+					AfterSelect_box.setSelectedIndex(-1);
+					AfterSelect_box.setForeground(new Color(204, 0, 0));
+					AfterSelect_box.setFont(new Font("Manjari Bold", Font.BOLD, 13));
+					AfterSelect_box.setBounds(262, 136, 149, 24);
+					frmStats.getContentPane().add(AfterSelect_box);
+					/*AfterSelect_box.addItem(dayPeriodOption[0]);
+					AfterSelect_box.addItem(dayPeriodOption[1]);
+					AfterSelect_box.addItem(dayPeriodOption[2]);
+					AfterSelect_box.addItem(dayPeriodOption[3]);  */
 				}
 			}
 		});
 		timeUnit_combobox.setToolTipText("Select the time period ");
 		timeUnit_combobox.setForeground(new Color(204, 0, 0));
 		timeUnit_combobox.setFont(new Font("Manjari Bold", Font.BOLD, 13));
-		timeUnit_combobox.setSelectedIndex(3);
+		timeUnit_combobox.setSelectedIndex(-1);
 		timeUnit_combobox.setBounds(262, 92, 149, 24);
 		frmStats.getContentPane().add(timeUnit_combobox);
 		
@@ -154,14 +188,14 @@ public class CreateStatistics_Menu {
 		
 		
 		JLabel lblPeriodOfTime = new JLabel("Period of Time");
-		lblPeriodOfTime.setForeground(new Color(51, 255, 0));
-		lblPeriodOfTime.setFont(new Font("Manjari Regular", Font.PLAIN, 15));
+		lblPeriodOfTime.setForeground(new Color(0, 255, 51));
+		lblPeriodOfTime.setFont(new Font("Manjari Thin", Font.BOLD, 15));
 		lblPeriodOfTime.setBounds(285, 52, 104, 28);
 		frmStats.getContentPane().add(lblPeriodOfTime);
 		
 		JLabel lblChooseAggregationFunction = new JLabel(" Aggregation Function");
-		lblChooseAggregationFunction.setForeground(new Color(51, 255, 0));
-		lblChooseAggregationFunction.setFont(new Font("Manjari Regular", Font.PLAIN, 15));
+		lblChooseAggregationFunction.setForeground(new Color(0, 255, 51));
+		lblChooseAggregationFunction.setFont(new Font("Manjari Thin", Font.BOLD, 15));
 		lblChooseAggregationFunction.setBounds(28, 52, 162, 28);
 		frmStats.getContentPane().add(lblChooseAggregationFunction);
 		

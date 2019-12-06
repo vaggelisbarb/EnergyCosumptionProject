@@ -111,6 +111,13 @@ public class MainApplicationGui {
 		frmSoftwareDevelopment.getContentPane().add(button_3);
 		
 		JButton btnGenerateReport = new JButton("Generate Report");
+		btnGenerateReport.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				GenerateReport_Menu report_clk = new GenerateReport_Menu();
+				report_clk.NewScreen3();
+			}
+		});
 		btnGenerateReport.setToolTipText("Click to generate a report");
 		btnGenerateReport.setIcon(new ImageIcon("/home/vaggelisbarb/Eclipse_Projects/2019_2020_<2766>_<2784>_<2821>/images/Reports-icon.png"));
 		btnGenerateReport.setForeground(new Color(204, 0, 0));

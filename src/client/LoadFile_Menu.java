@@ -71,13 +71,23 @@ public class LoadFile_Menu {
 		frmSoftwareDevelpomentAssignment.getContentPane().add(label_1);
 		
 		path_field = new JTextField();
-		path_field.setForeground(new Color(51, 255, 51));
+		path_field.setHorizontalAlignment(SwingConstants.CENTER);
+		path_field.setForeground(new Color(0, 0, 0));
 		path_field.setToolTipText("Enter file path here or browse");
 		path_field.setBounds(103, 107, 206, 20);
 		frmSoftwareDevelpomentAssignment.getContentPane().add(path_field);
 		path_field.setColumns(10);
 		
 		JButton btnBrowse = new JButton("Browse");
+		btnBrowse.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				String path = null;
+				MyCustomFileChooserRunner fr = new MyCustomFileChooserRunner();
+				path = fr.MyCustomFileChooserScreen("Files");
+				path_field.setText(path);
+			}
+		});
 		btnBrowse.setIcon(new ImageIcon("/home/vaggelisbarb/Eclipse_Projects/2019_2020_<2766>_<2784>_<2821>/images/Browse_icon.png"));
 		btnBrowse.setFont(new Font("Manjari Regular", Font.BOLD | Font.ITALIC, 13));
 		btnBrowse.setBounds(321, 107, 107, 20);
