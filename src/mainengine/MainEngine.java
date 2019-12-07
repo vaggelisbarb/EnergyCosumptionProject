@@ -15,7 +15,7 @@ import timeaggregation.AggregatorFactory;
 import timeaggregation.IAggregator;
 import reporting.IResultReporter;
 import reporting.TypeReportFactory;
-import client.ApplicationMainGUI;
+import client.MainApplicationGui;
 import dataload.DataLoader;
 import dataload.DataLoaderFactory;
 import dataload.ILoader;
@@ -39,10 +39,12 @@ public class MainEngine implements IMainEngine {
 	private IResultReporter reporter;
 	private TypeReportFactory typereportfactory;
 	
+	private ArrayList<MeasurementRecord> objCollection;
+	
 	
 	
 	public MainEngine() {
-		super();
+		objCollection = new ArrayList<MeasurementRecord>();
 		resultfactory = new ResultFactory();
 		resultmanager = resultfactory.constructResult("ResultManager");
 		dataloaderfactory = new DataLoaderFactory();
@@ -54,7 +56,7 @@ public class MainEngine implements IMainEngine {
 	@Override
 	public int loadData(String fileName, String delimeter, Boolean hasHeaderLine, int numFields,
 			ArrayList<MeasurementRecord> objCollection) {
-		return this.dataloader.load(fileName, delimeter, hasHeaderLine, numFields, objCollection);
+		return this.dataloader.load(fileName, delimeter, hasHeaderLine, numFields, this.objCollection);
 	}
 	
 	@Override
@@ -69,6 +71,9 @@ public class MainEngine implements IMainEngine {
 		IResultReporter reporter = reporterFactory.createReporter(reportType);
 		return 0;
 	}
-	
-	
+
+	public ArrayList<MeasurementRecord> getObjCollection() {
+		return objCollection;
+	}
+
 }
