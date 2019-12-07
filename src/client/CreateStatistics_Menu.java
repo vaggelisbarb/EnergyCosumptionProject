@@ -200,7 +200,7 @@ public class CreateStatistics_Menu {
 		frmStats.getContentPane().add(lblChooseAggregationFunction);
 		
 		JLabel Background = new JLabel("");
-		Background.setIcon(new ImageIcon("/home/vaggelisbarb/Λήψεις/abstract-technology-particle-background_52683-25766.jpg"));
+		Background.setIcon(new ImageIcon("/home/vaggelisbarb/Eclipse_Projects/2019_2020_<2766>_<2784>_<2821>/images/abstract-technology-particle-background_52683-25766.jpg"));
 		Background.setHorizontalAlignment(SwingConstants.CENTER);
 		Background.setBounds(0, 0, 465, 291);
 		frmStats.getContentPane().add(Background);

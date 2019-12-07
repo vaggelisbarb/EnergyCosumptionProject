@@ -4,6 +4,8 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import java.awt.Color;
 import javax.swing.SwingConstants;
@@ -11,18 +13,29 @@ import javax.swing.JTextField;
 import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.UIManager;
+
+import dataload.DataLoaderFactory;
+import dataload.ILoader;
+import datamodel.MeasurementRecord;
+import mainengine.IMainEngine;
+import mainengine.MainEngineFactory;
+
 import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
+import java.util.ArrayList;
 import java.awt.Window.Type;
 
 public class LoadFile_Menu {
 
 	private JFrame frmSoftwareDevelpomentAssignment;
 	private JTextField path_field;
-
+	private String path = null; // File path given
+	private int isLoaded; 
+	
 	/**
 	 * Launch the application.
 	 */
@@ -45,12 +58,14 @@ public class LoadFile_Menu {
 	public LoadFile_Menu() {
 		initialize();
 	}
+	
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
 		frmSoftwareDevelpomentAssignment = new JFrame();
+		frmSoftwareDevelpomentAssignment.setResizable(false);
 		frmSoftwareDevelpomentAssignment.setTitle("Load File");
 		frmSoftwareDevelpomentAssignment.setBounds(100, 100, 450, 300);
 		frmSoftwareDevelpomentAssignment.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -82,7 +97,7 @@ public class LoadFile_Menu {
 		btnBrowse.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				String path = null;
+				
 				MyCustomFileChooserRunner fr = new MyCustomFileChooserRunner();
 				path = fr.MyCustomFileChooserScreen("Files");
 				path_field.setText(path);
@@ -92,20 +107,40 @@ public class LoadFile_Menu {
 		btnBrowse.setFont(new Font("Manjari Regular", Font.BOLD | Font.ITALIC, 13));
 		btnBrowse.setBounds(321, 107, 107, 20);
 		frmSoftwareDevelpomentAssignment.getContentPane().add(btnBrowse);
-		
+	
 		JButton btnConfirm = new JButton("Confirm");
+		btnConfirm.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(path!=null) {
+					ArrayList<MeasurementRecord> objCollection = new ArrayList<MeasurementRecord>();
+					MainEngineFactory mainenginefactory = new MainEngineFactory();
+					IMainEngine mainengine = mainenginefactory.createMainEngine("MainEngine");
+					
+					// Checks the extension of the file and giving the right delimeter as argument to the method
+					String extension = null;
+					int lastDotIndex = path.lastIndexOf(".");
+					extension = path.substring(lastDotIndex+1);
+					
+					if(extension.equals("tsv"))
+						isLoaded = mainengine.loadData(path, "\t", false, 9, objCollection);
+					else if(extension.equals("txt"))
+						isLoaded = mainengine.loadData(path, ";", true, 9, objCollection);
+					
+					if(isLoaded!=0){
+						PopUp_FileLoad.PopUpLoad("OK");
+					}else
+						PopUp_FileLoad.PopUpLoad("Fail");	
+				}else
+					PopUp_FileLoad.PopUpLoad("enter_file");
+			}
+		});
 		btnConfirm.setFont(new Font("Manjari Bold", Font.BOLD, 14));
 		btnConfirm.setForeground(new Color(204, 0, 0));
 		btnConfirm.setBounds(159, 147, 117, 28);
 		frmSoftwareDevelpomentAssignment.getContentPane().add(btnConfirm);
 		
 		JButton btnReturn = new JButton("Return");
-		btnReturn.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				MainApplicationGui return_clk = new MainApplicationGui();
-			}
-		});
 		btnReturn.setIcon(new ImageIcon("/home/vaggelisbarb/Eclipse_Projects/2019_2020_<2766>_<2784>_<2821>/images/Industry-Return-icon.png"));
 		btnReturn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
