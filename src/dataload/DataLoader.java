@@ -16,10 +16,10 @@ public class DataLoader implements ILoader <MeasurementRecord>{
 	
 
 	public DataLoader() {
-		fileName = "/home/vaggelisbarb/Eclipse_Projects/2019_2020_<2766>_<2784>_<2821>/Resources/TestInput/household_preview.txt";
-		delimeter = ";";
-		hasHeaderLine = true;
-		numFields = 100;
+		//fileName = "/home/vaggelisbarb/Eclipse_Projects/2019_2020_<2766>_<2784>_<2821>/Resources/TestInput/household_preview.txt";
+		//delimeter = ";";
+	//	hasHeaderLine = true;
+		//numFields = 9;
 	}
 	
 
@@ -71,7 +71,7 @@ public class DataLoader implements ILoader <MeasurementRecord>{
 			//ToDo: here add the method that takes the token and forms the object and puts it in the resultList			
 			int objConstructionErrorCode;
 			objConstructionErrorCode = constructRecordsFromRow(tokens, objCollection);
-			if (objConstructionErrorCode !=0){
+			if (objConstructionErrorCode ==0){
 				System.out.println("ObjParsingError. I found a problem at line " + count + " of file " + fileName);
 				System.out.println("Objects created : "+ objConstructionErrorCode);
 				System.exit(0);
