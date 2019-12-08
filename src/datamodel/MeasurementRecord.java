@@ -8,10 +8,11 @@ public class MeasurementRecord {
 	private double laundryCons;
 	private double acCons;
 	
-	public MeasurementRecord(String fulldate, String fulltime) {
+	public MeasurementRecord(String fulldate, String fulltime,double kitchenCons) {
 		super();
 		this.fulldate = fulldate;
 		this.fulltime = fulltime;
+		this.kitchenCons = kitchenCons;
 	}
 
 	public MeasurementRecord(String fulldate, String fulltime, double kitchenCons, double laundryCons, double acCons) {
@@ -23,6 +24,12 @@ public class MeasurementRecord {
 		this.acCons = acCons;
 	}
 
+	public String getDateTime() {
+		String comma = ",";
+		String fullDateAndComma = this.fulldate.concat(comma);
+		return fullDateAndComma.concat(this.fulltime);
+	}
+	
 	public String getFulldate() {
 		return fulldate;
 	}

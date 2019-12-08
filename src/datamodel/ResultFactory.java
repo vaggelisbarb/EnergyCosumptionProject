@@ -3,10 +3,7 @@
  */
 package datamodel;
 
-/**
- * @author vaggelisbarb
- *
- */
+
 public class ResultFactory {
 	public IResult constructResult(String concreteClassName) {
 		if(concreteClassName.equals("ResultManager"))
