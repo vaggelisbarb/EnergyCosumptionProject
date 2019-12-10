@@ -4,33 +4,26 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JButton;
-import java.awt.BorderLayout;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.SwingConstants;
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.Image;
 
 import javax.swing.ImageIcon;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
 
-import mainengine.IMainEngine;
-import mainengine.MainEngine;
-import mainengine.MainEngineFactory;
 
 import javax.swing.JLabel;
-import javax.swing.LayoutStyle.ComponentPlacement;
+
+import mainengine.IMainEngine;
+import mainengine.MainEngineFactory;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import javax.swing.JTextField;
 
 public class MainApplicationGui {
 
+	
+	protected IMainEngine mainengine;
+	
 	private JFrame frmSoftwareDevelopment;
-	private MainEngineFactory mainenginefactory;
-	private IMainEngine mainengine;
 	/**
 	 * Launch the application.
 	 */
@@ -51,9 +44,11 @@ public class MainApplicationGui {
 	 * Create the application.
 	 */
 	public MainApplicationGui() {
-		mainenginefactory = new MainEngineFactory();
-		mainengine = mainenginefactory.createMainEngine("MainEngine");
 		initialize();
+	}
+
+	public void setMainengine(IMainEngine mainengine) {
+		this.mainengine = mainengine;
 	}
 
 	/**
@@ -77,7 +72,7 @@ public class MainApplicationGui {
 				LoadFile_Menu.NewScreen1();
 			}
 		});
-		load_button.setIcon(new ImageIcon("/home/vaggelisbarb/Eclipse_Projects/2019_2020_<2766>_<2784>_<2821>/images/LoadFile.png"));
+		load_button.setIcon(new ImageIcon("images/LoadFile.png"));
 		load_button.setForeground(new Color(204, 0, 0));
 		load_button.setFont(new Font("Manjari Bold", Font.BOLD, 13));
 		load_button.setBounds(130, 84, 338, 32);
@@ -91,7 +86,7 @@ public class MainApplicationGui {
 			}
 		});
 		stats_button.setToolTipText("Click to create statistics");
-		stats_button.setIcon(new ImageIcon("/home/vaggelisbarb/Eclipse_Projects/2019_2020_<2766>_<2784>_<2821>/images/Statistics-icon.png"));
+		stats_button.setIcon(new ImageIcon("images/Statistics-icon.png"));
 		stats_button.setForeground(new Color(204, 0, 0));
 		stats_button.setFont(new Font("Manjari Bold", Font.BOLD, 13));
 		stats_button.setBounds(130, 128, 338, 32);
@@ -101,7 +96,7 @@ public class MainApplicationGui {
 		button_3.addActionListener(e -> System.exit(0));
 		button_3.setToolTipText("Click to exit the programm");
 		
-		button_3.setIcon(new ImageIcon("/home/vaggelisbarb/Eclipse_Projects/2019_2020_<2766>_<2784>_<2821>/images/delete-icon.png"));
+		button_3.setIcon(new ImageIcon("images/delete-icon.png"));
 		button_3.setForeground(new Color(204, 0, 0));
 		button_3.setFont(new Font("Manjari Bold", Font.BOLD, 13));
 		button_3.setBounds(434, 230, 168, 29);
@@ -115,7 +110,7 @@ public class MainApplicationGui {
 			}
 		});
 		report_button.setToolTipText("Click to generate a report");
-		report_button.setIcon(new ImageIcon("/home/vaggelisbarb/Eclipse_Projects/2019_2020_<2766>_<2784>_<2821>/images/Reports-icon.png"));
+		report_button.setIcon(new ImageIcon("images/Reports-icon.png"));
 		report_button.setForeground(new Color(204, 0, 0));
 		report_button.setFont(new Font("Manjari Bold", Font.BOLD, 13));
 		report_button.setBounds(130, 172, 338, 32);
@@ -128,7 +123,7 @@ public class MainApplicationGui {
 				HistoryReports_Menu.NewScreen4();
 			}
 		});
-		history_btn.setIcon(new ImageIcon("/home/vaggelisbarb/Eclipse_Projects/2019_2020_<2766>_<2784>_<2821>/images/Rank-History-icon.png"));
+		history_btn.setIcon(new ImageIcon("images/Rank-History-icon.png"));
 		history_btn.setToolTipText("Click to view History of reports");
 		history_btn.setForeground(new Color(204, 0, 0));
 		history_btn.setFont(new Font("Manjari Bold", Font.BOLD, 13));
@@ -143,7 +138,7 @@ public class MainApplicationGui {
 		frmSoftwareDevelopment.getContentPane().add(lblEnergyConsumptionProject);
 		
 		JLabel label = new JLabel("");
-		label.setIcon(new ImageIcon("/home/vaggelisbarb/Λήψεις/rsz_abstract-technology-particle-background_52683-25766.jpg"));
+		label.setIcon(new ImageIcon("images/abstract-technology-particle-background_52683-25766.jpg"));
 		label.setBounds(0, 0, 614, 274);
 		frmSoftwareDevelopment.getContentPane().add(label);
 	}

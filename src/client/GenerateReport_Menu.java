@@ -51,6 +51,7 @@ public class GenerateReport_Menu {
 	 */
 	private void initialize() {
 		frmReport = new JFrame();
+		frmReport.setResizable(false);
 		frmReport.setTitle("Report");
 		frmReport.setBounds(100, 100, 450, 300);
 		frmReport.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -86,7 +87,7 @@ public class GenerateReport_Menu {
 		frmReport.getContentPane().add(pathFieldText);
 		
 		JButton btntxt = new JButton(".txt");
-		btntxt.setIcon(new ImageIcon("/home/vaggelisbarb/Eclipse_Projects/2019_2020_<2766>_<2784>_<2821>/images/Files-Txt-icon.png"));
+		btntxt.setIcon(new ImageIcon("images/Files-Txt-icon.png"));
 		btntxt.setToolTipText("Select to generate a .txt report");
 		btntxt.setForeground(new Color(204, 0, 0));
 		btntxt.setFont(new Font("Manjari Bold", Font.BOLD, 14));
@@ -94,7 +95,7 @@ public class GenerateReport_Menu {
 		frmReport.getContentPane().add(btntxt);
 		
 		JButton btnmd = new JButton(".md");
-		btnmd.setIcon(new ImageIcon("/home/vaggelisbarb/Eclipse_Projects/2019_2020_<2766>_<2784>_<2821>/images/text-x-markdown-icon.png"));
+		btnmd.setIcon(new ImageIcon("images/text-x-markdown-icon.png"));
 		btnmd.setToolTipText("Select to generate a .md report");
 		btnmd.setForeground(new Color(204, 0, 0));
 		btnmd.setFont(new Font("Manjari Bold", Font.BOLD, 14));
@@ -112,14 +113,14 @@ public class GenerateReport_Menu {
 					pathFieldText.setText(path);
 			}
 		});
-		browse_button.setIcon(new ImageIcon("/home/vaggelisbarb/Eclipse_Projects/2019_2020_<2766>_<2784>_<2821>/images/Browse_icon.png"));
+		browse_button.setIcon(new ImageIcon("images/Browse_icon.png"));
 		browse_button.setFont(new Font("Manjari Regular", Font.BOLD | Font.ITALIC, 13));
 		browse_button.setBounds(331, 92, 107, 20);
 		frmReport.getContentPane().add(browse_button);
 
 		
 		JButton btnhtml = new JButton(".html");
-		btnhtml.setIcon(new ImageIcon("/home/vaggelisbarb/Eclipse_Projects/2019_2020_<2766>_<2784>_<2821>/images/html-icon.png"));
+		btnhtml.setIcon(new ImageIcon("images/html-icon.png"));
 		btnhtml.setToolTipText("Select to generate a .html report");
 		btnhtml.setForeground(new Color(204, 0, 0));
 		btnhtml.setFont(new Font("Manjari Bold", Font.BOLD, 14));
@@ -134,7 +135,7 @@ public class GenerateReport_Menu {
 		frmReport.getContentPane().add(lblFilePath);
 		
 		JLabel BackGround = new JLabel("");
-		BackGround.setIcon(new ImageIcon("/home/vaggelisbarb/Λήψεις/abstract-technology-particle-background_52683-25766.jpg"));
+		BackGround.setIcon(new ImageIcon("images/abstract-technology-particle-background_52683-25766.jpg"));
 		BackGround.setHorizontalAlignment(SwingConstants.CENTER);
 		BackGround.setBounds(0, 0, 465, 291);
 		frmReport.getContentPane().add(BackGround);

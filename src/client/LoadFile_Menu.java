@@ -4,18 +4,13 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 
 import java.awt.Font;
 import java.awt.Color;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
-import java.awt.GridLayout;
 import javax.swing.JButton;
-import javax.swing.UIManager;
 
-import dataload.DataLoaderFactory;
-import dataload.ILoader;
 import datamodel.MeasurementRecord;
 import mainengine.IMainEngine;
 import mainengine.MainEngineFactory;
@@ -25,16 +20,17 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.File;
 import java.util.ArrayList;
-import java.awt.Window.Type;
 
 public class LoadFile_Menu {
 
+	protected MainEngineFactory mainenginefactory; 
+	protected IMainEngine mainengine;
+	
 	private JFrame frmSoftwareDevelpomentAssignment;
 	private JTextField path_field;
 	private String path = null; // File path given
-	private int isLoaded; 
+	private int isLoaded; // 0 if file is notLoaded
 	
 	/**
 	 * Launch the application.
@@ -98,12 +94,12 @@ public class LoadFile_Menu {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-				MyCustomFileChooserRunner fr = new MyCustomFileChooserRunner();
-				path = fr.MyCustomFileChooserScreen("Files");
+				// Opens the "Search File" window 
+				path = MyCustomFileChooserRunner.MyCustomFileChooserScreen("Files");
 				path_field.setText(path);
 			}
 		});
-		btnBrowse.setIcon(new ImageIcon("/home/vaggelisbarb/Eclipse_Projects/2019_2020_<2766>_<2784>_<2821>/images/Browse_icon.png"));
+		btnBrowse.setIcon(new ImageIcon("images/Browse_icon.png"));
 		btnBrowse.setFont(new Font("Manjari Regular", Font.BOLD | Font.ITALIC, 13));
 		btnBrowse.setBounds(321, 107, 107, 20);
 		frmSoftwareDevelpomentAssignment.getContentPane().add(btnBrowse);
@@ -113,9 +109,11 @@ public class LoadFile_Menu {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if(path!=null) {
+					
+					// Create a new IMainEngine via MainEngineFactory ("Connection" of packages client-mainengine has been created)
 					ArrayList<MeasurementRecord> objCollection = new ArrayList<MeasurementRecord>();
-					MainEngineFactory mainenginefactory = new MainEngineFactory();
-					IMainEngine mainengine = mainenginefactory.createMainEngine("MainEngine");
+					mainenginefactory = new MainEngineFactory();
+					mainengine = mainenginefactory.createMainEngine("MainEngine");
 					
 					// Checks the extension of the file and giving the right delimeter as argument to the method
 					String extension = null;
@@ -127,6 +125,7 @@ public class LoadFile_Menu {
 					else if(extension.equals("txt"))
 						isLoaded = mainengine.loadData(path, ";", true, 9, objCollection);
 					
+					// Message window box with the appropriate message
 					if(isLoaded!=0){
 						PopUp_FileLoad.PopUpLoad("OK");
 					}else
@@ -141,7 +140,7 @@ public class LoadFile_Menu {
 		frmSoftwareDevelpomentAssignment.getContentPane().add(btnConfirm);
 		
 		JButton btnReturn = new JButton("Return");
-		btnReturn.setIcon(new ImageIcon("/home/vaggelisbarb/Eclipse_Projects/2019_2020_<2766>_<2784>_<2821>/images/Industry-Return-icon.png"));
+		btnReturn.setIcon(new ImageIcon("images/Industry-Return-icon.png"));
 		btnReturn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
@@ -152,7 +151,7 @@ public class LoadFile_Menu {
 		frmSoftwareDevelpomentAssignment.getContentPane().add(btnReturn);
 		
 		JLabel label_2 = new JLabel("");
-		label_2.setIcon(new ImageIcon("/home/vaggelisbarb/Λήψεις/abstract-technology-particle-background_52683-25766.jpg"));
+		label_2.setIcon(new ImageIcon("images/abstract-technology-particle-background_52683-25766.jpg"));
 		label_2.setHorizontalAlignment(SwingConstants.CENTER);
 		label_2.setBounds(0, 0, 465, 291);
 		frmSoftwareDevelpomentAssignment.getContentPane().add(label_2);

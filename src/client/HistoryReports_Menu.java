@@ -1,47 +1,31 @@
 package client;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
-import java.awt.FlowLayout;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JList;
-import javax.swing.JPanel;
-import javax.swing.JRootPane;
 import javax.swing.JScrollPane;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
-import javax.swing.ImageIcon;
 import java.awt.Font;
 import java.awt.Color;
 import java.awt.Dimension;
 
-import javax.swing.JTable;
-import javax.swing.JTextArea;
-import javax.swing.JScrollBar;
 import javax.swing.ListSelectionModel;
 import javax.swing.AbstractListModel;
 import javax.swing.border.BevelBorder;
-import javax.swing.border.LineBorder;
 import javax.swing.event.ListSelectionListener;
 
-import java.awt.Point;
 import java.awt.Cursor;
-import java.awt.Rectangle;
-import javax.swing.JTextPane;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JTextField;
-import javax.swing.DropMode;
 import javax.swing.event.ListSelectionEvent;
 
 public class HistoryReports_Menu {
 
 	private JFrame frmReportsHistory;
-	private JTable table;
-	private JTextPane descrpitonArea;
+	private JTextField descriptionField;
 	
 
 	/**
@@ -54,6 +38,8 @@ public class HistoryReports_Menu {
 					HistoryReports_Menu window = new HistoryReports_Menu();
 					window.frmReportsHistory.setVisible(true);
 				} catch (Exception e) {
+					
+					
 					e.printStackTrace();
 				}
 			}
@@ -72,6 +58,8 @@ public class HistoryReports_Menu {
 	 */
 	private void initialize() {
 		frmReportsHistory = new JFrame();
+		frmReportsHistory.getContentPane().setBackground(Color.DARK_GRAY);
+		frmReportsHistory.setResizable(false);
 		frmReportsHistory.setTitle("Reports History");
 		frmReportsHistory.setBounds(100, 100, 600, 280);
 		frmReportsHistory.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -80,9 +68,8 @@ public class HistoryReports_Menu {
 		JList<String> reportsList = new JList<String>();
 		reportsList.addListSelectionListener(new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent arg0) {
-				if(reportsList.getSelectedIndex() != -1) {
-					String selectedReport = reportsList.getSelectedValue();
-					//descrpitonArea.setText(selectedReport);
+				if(reportsList.getSelectedIndex() == 0) {
+					descriptionField.setText("AEK");
 				}
 			}
 		});
@@ -100,7 +87,6 @@ public class HistoryReports_Menu {
 				return values[index];
 			}
 		});
-		reportsList.setSelectedIndex(0);
 		JScrollPane scrollableTextArea = new JScrollPane(reportsList);
 		scrollableTextArea.setSize(419, 143);
 		scrollableTextArea.setLocation(75, 12);
@@ -117,18 +103,20 @@ public class HistoryReports_Menu {
 		lblReports.setHorizontalAlignment(SwingConstants.CENTER);
 		scrollableTextArea.setColumnHeaderView(lblReports);
 		
-		descrpitonArea = new JTextPane();
-		descrpitonArea.setForeground(Color.DARK_GRAY);
-		descrpitonArea.setFont(new Font("League Spartan Light", Font.BOLD, 14));
+		descriptionField = new JTextField();
+		descriptionField.setFont(new Font("League Spartan Semibold", Font.BOLD, 16));
+		descriptionField.setForeground(Color.RED);
+		descriptionField.setEditable(false);
+		descriptionField.setColumns(10);
 		GroupLayout groupLayout = new GroupLayout(frmReportsHistory.getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(75)
 					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING, false)
-						.addComponent(descrpitonArea, Alignment.LEADING)
+						.addComponent(descriptionField, Alignment.LEADING)
 						.addComponent(scrollableTextArea, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-					.addGap(75))
+					.addGap(85))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -136,8 +124,8 @@ public class HistoryReports_Menu {
 					.addGap(5)
 					.addComponent(scrollableTextArea, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addGap(18)
-					.addComponent(descrpitonArea, GroupLayout.PREFERRED_SIZE, 59, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(18, Short.MAX_VALUE))
+					.addComponent(descriptionField, GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)
+					.addContainerGap())
 		);
 		frmReportsHistory.getContentPane().setLayout(groupLayout);
 		

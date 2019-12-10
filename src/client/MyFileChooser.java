@@ -1,10 +1,8 @@
 package client;
 
-import java.awt.EventQueue;
 import java.io.File;
 
 import javax.swing.JFileChooser;
-import javax.swing.JFrame;
 
 public class MyFileChooser extends JFileChooser {
 
