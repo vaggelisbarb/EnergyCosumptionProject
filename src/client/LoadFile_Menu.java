@@ -24,8 +24,9 @@ import java.util.ArrayList;
 
 public class LoadFile_Menu {
 
-	protected MainEngineFactory mainenginefactory; 
-	protected IMainEngine mainengine;
+	static MainEngineFactory mainenginefactory; 
+	static IMainEngine mainengine;
+	static ArrayList<MeasurementRecord> objCollection ;
 	
 	private JFrame frmSoftwareDevelpomentAssignment;
 	private JTextField path_field;
@@ -111,9 +112,10 @@ public class LoadFile_Menu {
 				if(path!=null) {
 					
 					// Create a new IMainEngine via MainEngineFactory ("Connection" of packages client-mainengine has been created)
-					ArrayList<MeasurementRecord> objCollection = new ArrayList<MeasurementRecord>();
+					objCollection = new ArrayList<MeasurementRecord>();
 					mainenginefactory = new MainEngineFactory();
 					mainengine = mainenginefactory.createMainEngine("MainEngine");
+					
 					
 					// Checks the extension of the file and giving the right delimeter as argument to the method
 					String extension = null;
@@ -140,6 +142,12 @@ public class LoadFile_Menu {
 		frmSoftwareDevelpomentAssignment.getContentPane().add(btnConfirm);
 		
 		JButton btnReturn = new JButton("Return");
+		btnReturn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				frmSoftwareDevelpomentAssignment.setVisible(false);
+			}
+		});
 		btnReturn.setIcon(new ImageIcon("images/Industry-Return-icon.png"));
 		btnReturn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {

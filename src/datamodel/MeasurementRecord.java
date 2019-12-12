@@ -24,6 +24,7 @@ public class MeasurementRecord {
 		this.acCons = acCons;
 	}
 
+	// Concat Date ant Time strings with a "," between them
 	public String getDateTime() {
 		String comma = ",";
 		String fullDateAndComma = this.fulldate.concat(comma);

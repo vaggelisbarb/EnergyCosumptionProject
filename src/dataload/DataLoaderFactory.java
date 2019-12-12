@@ -4,11 +4,8 @@ import dataload.DataLoader;
 import datamodel.MeasurementRecord;
 
 public class DataLoaderFactory {
-	public ILoader <MeasurementRecord> createDataLoader(String filename){
-			if(!filename.equals(""))
-					return new DataLoader(filename);
+	public ILoader <MeasurementRecord> createDataLoader(){
+					return new DataLoader();
 		
-		System.out.println("If the code got up to here, you passed a wrong argument to the FullDataLoader Factory");
-		return null;
 	}
 }

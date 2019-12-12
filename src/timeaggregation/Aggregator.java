@@ -7,6 +7,8 @@ import java.util.ArrayList;
 
 import datamodel.IResult;
 import datamodel.MeasurementRecord;
+import datamodel.ResultFactory;
+import datamodel.ResultManager;
 
 /**
  * @author vaggelisbarb
@@ -14,32 +16,53 @@ import datamodel.MeasurementRecord;
  */
 public class Aggregator implements IAggregator{
 	private IResult aggregationResult;
+	private ResultFactory resultFactory;
+	private String timeUnit;
+	private String description;
+	private String aggFunction;
 	
+	// Default Constructor
 	public Aggregator() {
-		super();
+		resultFactory = new ResultFactory();
+		aggregationResult = resultFactory.constructResult(description,timeUnit);
+	}
+
+	// Constructor
+	public Aggregator(IResult aggregationResult, ResultFactory resultFactory,String timeUnit,String description,String aggFunction) {
+		this.aggregationResult = aggregationResult;
+		this.resultFactory = resultFactory;
+		this.timeUnit = timeUnit;
+		this.description = description;
+		this.aggFunction = aggFunction;
 	}
 
 	
-	/**
-	 * @param aggregationResult
-	 */
-	public Aggregator(IResult aggregationResult) {
-		super();
-		this.aggregationResult = aggregationResult;
+	public Aggregator(String timeUnit,String aggFunction) {
+		this.timeUnit = timeUnit;
+		this.aggFunction = aggFunction;
+		resultFactory = new ResultFactory();
+		aggregationResult = resultFactory.constructResult(description,aggFunction);
 	}
-
 
 	@Override
 	public IResult aggregateByTimeUnit(ArrayList<MeasurementRecord> inputMeasurements, String aggFunction,
 			String description) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		aggregationResult = new ResultManager(description,aggFunction);
+		for(MeasurementRecord record : inputMeasurements) {
+			aggregationResult.add(this.timeUnit, record);
+		}
+		/*aggregationResult.getDetailedResults();
+		aggregationResult.getAggregateMeterLaundry();
+		aggregationResult.getAggregateMeterAC();
+		aggregationResult.getAggregateMeterKitchen();
+		*/
+		return aggregationResult;
 	}
 
 	@Override
 	public String getTimeUnitType() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.timeUnit;
 	}
 	
 }

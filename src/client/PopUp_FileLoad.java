@@ -10,6 +10,8 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.Color;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class PopUp_FileLoad {
 
@@ -62,6 +64,8 @@ public class PopUp_FileLoad {
 			textField.setText("Error : File cannot be loaded.");
 		else if(option.equals("enter_file"))
 			textField.setText("Please give or browse a file");
+		else
+			textField.setText(option);
 		
 		textField.setForeground(Color.BLACK);
 		textField.setFont(new Font("League Spartan", Font.BOLD, 17));
@@ -71,6 +75,13 @@ public class PopUp_FileLoad {
 		textField.setColumns(10);
 		
 		ok_btn = new JButton("OK");
+		ok_btn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				frmMessage.setVisible(false);
+			}
+		});
+		ok_btn.setHorizontalTextPosition(SwingConstants.CENTER);
 		ok_btn.setForeground(new Color(204, 0, 0));
 		ok_btn.setFont(new Font("Manjari Bold", Font.BOLD, 14));
 		ok_btn.setBounds(137, 96, 117, 28);

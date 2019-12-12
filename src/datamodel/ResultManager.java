@@ -20,6 +20,11 @@ import java.util.HashMap;
  */
 public class ResultManager implements IResult{
 	private HashMap<String, ArrayList<MeasurementRecord>> recordsHashMap;
+	private HashMap<String, Double> kitchenMap;
+	private HashMap<String, Double> laundryMap;
+	private HashMap<String, Double> acMap;
+	private Stats statistics;
+	
 	private String description;
 	private String aggFunction;
 	private String timeUnit;
@@ -27,6 +32,18 @@ public class ResultManager implements IResult{
 	public ResultManager() {
 		recordsHashMap = new HashMap<String, ArrayList<MeasurementRecord>>(); 
 	}
+	
+	
+	public ResultManager(String description, String aggFunction) {
+		recordsHashMap = new HashMap<String, ArrayList<MeasurementRecord>>(); 
+		this.description = description;
+		this.aggFunction = aggFunction;
+	}
+	
+
+
+
+
 
 	// Convert date from input String to Date object	
 	public LocalDateTime convertStringToDate(String timeUnit) {
@@ -38,7 +55,7 @@ public class ResultManager implements IResult{
 		
 		switch (timeUnit) {
 		case "WINTER":
-			String[] winterArr = {"12","1","2"};
+			String[] winterArr = {"1","2","12"};
 			return winterArr;
 		case "SUMMER" :
 			String[] summerArr = {"6","7","8"};
@@ -80,7 +97,7 @@ public class ResultManager implements IResult{
 		case "SUNDAY":
 			String[] sunArr= {"7"}; 
 			return sunArr;
-		case "WEEK" :
+		case "dayofweek" :
 			String[] weekArr= {"1","2","3","4","5","6","7"};
 			return weekArr;
 		}
@@ -125,6 +142,9 @@ public class ResultManager implements IResult{
 		case "DEC":
 			String[] decArr= {"12"}; 
 			return decArr;		
+		case "MONTH" :
+			String[] monthArr = {"1","2","3","4","5","6","7","8","9","10","11","12"};
+			return monthArr;
 		}
 		return null;
 	}
@@ -153,7 +173,7 @@ public class ResultManager implements IResult{
 	public int mappingRecords(HashMap<String, ArrayList<MeasurementRecord>> map,MeasurementRecord record,String unit) {
 		if(!map.containsKey(unit)) {
 			ArrayList<MeasurementRecord> list = new ArrayList<MeasurementRecord>();
-			list.add(record);
+			list.add(record); 
 			map.put(unit, list);
 			System.out.println("List with key "+unit +" is 1st time found.Size of new List = " + list.size() );
 			return list.size();
@@ -186,8 +206,10 @@ public class ResultManager implements IResult{
 				int dayWeek = fullDate.get(ChronoField.DAY_OF_WEEK);
 				for (int i = 0; i < array.length; i++) {
 					int arrayToInt = Integer.parseInt(array[i]);
-					if(dayWeek== arrayToInt)
-						collecionSize = mappingRecords(recordsHashMap, record, array[i]);
+					if(dayWeek== arrayToInt) {
+						String newUnit = ("0").concat(array[i]);
+						collecionSize = mappingRecords(recordsHashMap, record, newUnit);					
+					}
 				}
 				return collecionSize;
 			}else if (isMonth(timeUnit)!=null) {
@@ -204,8 +226,10 @@ public class ResultManager implements IResult{
 				int hour = fullDate.get(ChronoField.HOUR_OF_DAY);
 					int arrayToIntStart = Integer.parseInt(array[0]);
 					int arrayToIntStop = Integer.parseInt(array[array.length-1]);
-					if(hour>=arrayToIntStart || hour<=arrayToIntStop) {
-						collecionSize = mappingRecords(recordsHashMap, record, array[0]);
+					if(hour>=arrayToIntStart && hour<=arrayToIntStop) {
+						collecionSize = mappingRecords(recordsHashMap, record, timeUnit);
+					}else {
+						return 0 ;
 					}
 			}
 			return collecionSize;
@@ -213,7 +237,7 @@ public class ResultManager implements IResult{
 		return 0;
 	}
 
-	// From the Arraylist that have been created with add() to each measurement , i want to make it a Hashmap with keys : timeunit
+	
 	@Override
 	public HashMap<String, ArrayList<MeasurementRecord>> getDetailedResults() {
 		return this.recordsHashMap;
@@ -222,32 +246,32 @@ public class ResultManager implements IResult{
 
 	@Override
 	public HashMap<String, Double> getAggregateMeterKitchen() {
-		
-		return null;
+			statistics = new Stats(description, aggFunction, recordsHashMap);
+			return statistics.computeStats("Kitchen");
 	}
 
 	@Override
 	public HashMap<String, Double> getAggregateMeterLaundry() {
-		// TODO Auto-generated method stub
-		return null;
+		statistics = new Stats(description, aggFunction, recordsHashMap);
+		this.laundryMap = statistics.computeStats("Laundry");
+		return laundryMap;
 	}
 
 	@Override
 	public HashMap<String, Double> getAggregateMeterAC() {
-		// TODO Auto-generated method stub
-		return null;
+		statistics = new Stats(description, aggFunction, recordsHashMap);
+		this.acMap = statistics.computeStats("AC");
+		return acMap;
 	}
 
 	@Override
 	public String getDescription() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.description;
 	}
 	
 	@Override
 	public String getAggregateFunction() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.aggFunction;
 	}
 
 

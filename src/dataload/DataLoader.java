@@ -10,16 +10,10 @@ import datamodel.MeasurementRecord;
 
 public class DataLoader implements ILoader <MeasurementRecord>{
 	private String fileName;
-	private String delimeter;
-	private boolean hasHeaderLine;
-	private int numFields;
 	
 
 	public DataLoader() {
-		//fileName = "/home/vaggelisbarb/Eclipse_Projects/2019_2020_<2766>_<2784>_<2821>/Resources/TestInput/household_preview.txt";
-		//delimeter = ";";
-	//	hasHeaderLine = true;
-		//numFields = 9;
+		
 	}
 	
 

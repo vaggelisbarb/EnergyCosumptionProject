@@ -8,15 +8,10 @@ import java.util.ArrayList;
 import datamodel.IResult;
 import datamodel.MeasurementRecord;
 import datamodel.ResultFactory;
-import datamodel.ResultManager;
 import reporting.IResultReporter;
 import reporting.TypeReportFactory;
 import timeaggregation.AggregatorFactory;
 import timeaggregation.IAggregator;
-import reporting.IResultReporter;
-import reporting.TypeReportFactory;
-import client.MainApplicationGui;
-import dataload.DataLoader;
 import dataload.DataLoaderFactory;
 import dataload.ILoader;
 
@@ -46,11 +41,12 @@ public class MainEngine implements IMainEngine {
 	public MainEngine() {
 		objCollection = new ArrayList<MeasurementRecord>();
 		resultfactory = new ResultFactory();
-		resultmanager = resultfactory.constructResult("ResultManager");
+		//resultmanager = resultfactory.constructResult("ResultManager");
+		
 		dataloaderfactory = new DataLoaderFactory();
-		dataloader = dataloaderfactory.createDataLoader("/home/vaggelisbarb/Eclipse_Projects/2019_2020_<2766>_<2784>_<2821>/Resources/TestInput/household_preview.txt");
+		dataloader = dataloaderfactory.createDataLoader();
+	
 		aggregatorfactory = new AggregatorFactory();
-		aggregator = aggregatorfactory.createAggregator("Aggregator");
 	}
 
 	@Override
@@ -62,7 +58,9 @@ public class MainEngine implements IMainEngine {
 	@Override
 	public IResult aggregateByTimeUnit(ArrayList<MeasurementRecord> inputMeasurements, String aggregatorType,
 			String aggFunction, String description) {
-			return null;
+		
+		aggregator = aggregatorfactory.createAggregator(aggregatorType,aggFunction);
+		return aggregator.aggregateByTimeUnit(objCollection, aggFunction, description);
 	}
 	
 	@Override

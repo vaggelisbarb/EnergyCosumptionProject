@@ -19,9 +19,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class MainApplicationGui {
-
-	
-	protected IMainEngine mainengine;
 	
 	private JFrame frmSoftwareDevelopment;
 	/**
@@ -47,9 +44,6 @@ public class MainApplicationGui {
 		initialize();
 	}
 
-	public void setMainengine(IMainEngine mainengine) {
-		this.mainengine = mainengine;
-	}
 
 	/**
 	 * Initialize the contents of the frame.
@@ -93,6 +87,12 @@ public class MainApplicationGui {
 		frmSoftwareDevelopment.getContentPane().add(stats_button);
 		
 		JButton button_3 = new JButton("Exit");
+		button_3.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				System.exit(0);
+			}
+		});
 		button_3.addActionListener(e -> System.exit(0));
 		button_3.setToolTipText("Click to exit the programm");
 		
