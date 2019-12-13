@@ -8,6 +8,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.Font;
+import java.util.ArrayList;
 import java.awt.Color;
 import java.awt.Dimension;
 
@@ -16,6 +17,8 @@ import javax.swing.AbstractListModel;
 import javax.swing.border.BevelBorder;
 import javax.swing.event.ListSelectionListener;
 
+import reporting.IResultReporter;
+
 import java.awt.Cursor;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -23,7 +26,7 @@ import javax.swing.JTextField;
 import javax.swing.event.ListSelectionEvent;
 
 public class HistoryReports_Menu {
-
+	
 	private JFrame frmReportsHistory;
 	private JTextField descriptionField;
 	
@@ -79,7 +82,7 @@ public class HistoryReports_Menu {
 		reportsList.setFont(new Font("Manjari Regular", Font.BOLD, 16));
 		reportsList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		reportsList.setModel(new AbstractListModel() {
-			String[] values = new String[] {"Report 1asdasdada", "Report 2sdasdasdasd", "Report 3", "Report 4asdasda", "Report 5", "Report 6"};
+			String[] values = new String[] {"Report 1", "Report2"};
 			public int getSize() {
 				return values.length;
 			}

@@ -5,21 +5,20 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
+import datamodel.IResult;
 import javax.swing.ImageIcon;
 import java.awt.Font;
 import java.awt.Color;
-import javax.swing.JScrollPane;
-import javax.swing.JSplitPane;
 import javax.swing.JButton;
-import javax.swing.JFileChooser;
 import javax.swing.JTextField;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.File;
-import java.awt.Toolkit;
+import java.util.HashMap;
 
 public class GenerateReport_Menu {
-
+	
+	
+	static HashMap<String, String> reportDetailsMap;
 	private JFrame frmReport;
 	private JTextField pathFieldText;
 
@@ -43,9 +42,12 @@ public class GenerateReport_Menu {
 	 * Create the application.
 	 */
 	public GenerateReport_Menu() {
+		reportDetailsMap = new HashMap<String, String>();
 		initialize();
 	}
 
+	
+	
 	/**
 	 * Initialize the contents of the frame.
 	 */
@@ -88,6 +90,23 @@ public class GenerateReport_Menu {
 		frmReport.getContentPane().add(pathFieldText);
 		
 		JButton btntxt = new JButton(".txt");
+		btntxt.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(CreateStatistics_Menu.result!=null) {
+					if(pathFieldText!=null) {
+						if(LoadFile_Menu.mainengine.reportResultInFile(CreateStatistics_Menu.result, "txt", pathFieldText.getText())==0) {
+							PopUp_FileLoad.PopUpLoad(".TXT report generated");
+							//HistoryReports_Menu.historyReports.put(CreateStatistics_Menu.result.getDescription(), "Aggregate function : "+CreateStatistics_Menu.result.getAggregateFunction()+". \nFile path :  "+ pathFieldText.getText());
+						}
+					}else
+						PopUp_FileLoad.PopUpLoad("Give valid path");
+				}else {
+					PopUp_FileLoad.PopUpLoad("Create Statistics first");
+					System.err.println("Error.Statistics not created");
+				}
+			}
+		});
 		btntxt.setIcon(new ImageIcon("images/Files-Txt-icon.png"));
 		btntxt.setToolTipText("Select to generate a .txt report");
 		btntxt.setForeground(new Color(204, 0, 0));
@@ -96,6 +115,21 @@ public class GenerateReport_Menu {
 		frmReport.getContentPane().add(btntxt);
 		
 		JButton btnmd = new JButton(".md");
+		btnmd.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(CreateStatistics_Menu.result!=null) {
+					if(pathFieldText!=null) {
+						if(LoadFile_Menu.mainengine.reportResultInFile(CreateStatistics_Menu.result, "md", pathFieldText.getText())==0);
+							PopUp_FileLoad.PopUpLoad(".MD report generated");
+					}else
+						PopUp_FileLoad.PopUpLoad("Give valid path");
+				}else {
+					PopUp_FileLoad.PopUpLoad("Create Statistics first");
+					System.err.println("Error.Statistics not created");
+				}
+			}
+		});
 		btnmd.setIcon(new ImageIcon("images/text-x-markdown-icon.png"));
 		btnmd.setToolTipText("Select to generate a .md report");
 		btnmd.setForeground(new Color(204, 0, 0));
@@ -110,7 +144,7 @@ public class GenerateReport_Menu {
 			public void mouseClicked(MouseEvent e) {
 					String path = null;
 					MyCustomFileChooserRunner fr = new MyCustomFileChooserRunner();
-					path = fr.MyCustomFileChooserScreen("Dir");
+					path = fr.MyCustomFileChooserScreen("Files");
 					pathFieldText.setText(path);
 			}
 		});
@@ -121,6 +155,22 @@ public class GenerateReport_Menu {
 
 		
 		JButton btnhtml = new JButton(".html");
+		btnhtml.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(CreateStatistics_Menu.result!=null) {
+					if(pathFieldText!=null) {
+						if(LoadFile_Menu.mainengine.reportResultInFile(CreateStatistics_Menu.result, "html", pathFieldText.getText())==0);
+							PopUp_FileLoad.PopUpLoad(".HTML report generated");
+					}else
+						PopUp_FileLoad.PopUpLoad("Give valid path");
+				}else {
+					PopUp_FileLoad.PopUpLoad("Create Statistics first");
+					System.err.println("Error.Statistics not created");
+				}
+			}
+				
+		});
 		btnhtml.setIcon(new ImageIcon("images/html-icon.png"));
 		btnhtml.setToolTipText("Select to generate a .html report");
 		btnhtml.setForeground(new Color(204, 0, 0));

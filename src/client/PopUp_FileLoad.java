@@ -70,7 +70,7 @@ public class PopUp_FileLoad {
 		textField.setForeground(Color.BLACK);
 		textField.setFont(new Font("Comfortaa", Font.BOLD, 15));
 		textField.setHorizontalAlignment(SwingConstants.CENTER);
-		textField.setBounds(50, 32, 282, 32);
+		textField.setBounds(35, 30, 325, 32);
 		frmMessage.getContentPane().add(textField);
 		textField.setColumns(10);
 		

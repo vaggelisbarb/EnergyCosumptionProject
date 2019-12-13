@@ -175,49 +175,61 @@ public class CreateStatistics_Menu {
 					btnIsSelected = "sum";
 				else if (Average_btn.isSelected())
 					btnIsSelected = "avg";
-
-				if(btnIsSelected!=null) {
-					if(timeUnit_combobox.getSelectedIndex()==0) {
-						if(giveTime.getText().equals("")){
-							result = LoadFile_Menu.mainengine.aggregateByTimeUnit(LoadFile_Menu.objCollection,"SEASON" , btnIsSelected, text_field.getText());
-							PopUp_FileLoad.PopUpLoad("Stats created for : " +"Seasonly"+ " with " + btnIsSelected.toUpperCase() + " function");
-						}else if((giveTime.getText().equals("WINTER") || giveTime.getText().equals("SPRING") || giveTime.getText().equals("SUMMER") || giveTime.getText().equals("AUTUMN")) ){
-							result = LoadFile_Menu.mainengine.aggregateByTimeUnit(LoadFile_Menu.objCollection,giveTime.getText() , btnIsSelected, text_field.getText());
-							PopUp_FileLoad.PopUpLoad("Stats : " + giveTime.getText() + " & " + btnIsSelected.toUpperCase() + " function");
-						}else
-							PopUp_FileLoad.PopUpLoad("Enter valid Season in upper.");
-					}else if(timeUnit_combobox.getSelectedIndex()==1){
-						if(giveTime.getText().equals("")) {
-							result = LoadFile_Menu.mainengine.aggregateByTimeUnit(LoadFile_Menu.objCollection, "MONTH", btnIsSelected, text_field.getText());
-							PopUp_FileLoad.PopUpLoad("Stats : " + " Monthly "+ " & " + btnIsSelected.toUpperCase() + " function");
-						}else if (giveTime.getText().equals("JAN") || giveTime.getText().equals("FEB") || giveTime.getText().equals("MAR") || giveTime.getText().equals("APR") || (giveTime.getText().equals("MAY") || giveTime.getText().equals("JUN") || giveTime.getText().equals("JUL") || giveTime.getText().equals("AUG")) ||(giveTime.getText().equals("SEP") || giveTime.getText().equals("OCT") || giveTime.getText().equals("NOV") || giveTime.getText().equals("DEC"))  ) {
-							result = LoadFile_Menu.mainengine.aggregateByTimeUnit(LoadFile_Menu.objCollection, giveTime.getText(), btnIsSelected, text_field.getText());
-							PopUp_FileLoad.PopUpLoad("Stats : " + giveTime.getText() + " & " + btnIsSelected.toUpperCase() + " function");
-						}else
-							PopUp_FileLoad.PopUpLoad("Enter a month. (e.g JAN for January) ");
-						
-					}else if (timeUnit_combobox.getSelectedIndex()==2) {
-						if(giveTime.getText().equals("")) {
-							result = LoadFile_Menu.mainengine.aggregateByTimeUnit(LoadFile_Menu.objCollection, "dayofweek", btnIsSelected,text_field.getText() );
-							PopUp_FileLoad.PopUpLoad("Stats : " + giveTime.getText() + " & " + btnIsSelected.toUpperCase() + " function");
-						}else if(giveTime.getText().equals("MONDAY") || giveTime.getText().equals("TUESDAY") || giveTime.getText().equals("WEDNESDAY") || giveTime.getText().equals("THURSDAY") || (giveTime.getText().equals("FRIDAY") || giveTime.getText().equals("SATURDAY") || giveTime.getText().equals("SUNDAY") )) {
+				if(LoadFile_Menu.mainengine!=null) {
+					if(btnIsSelected!=null) {
+						if(timeUnit_combobox.getSelectedIndex()==0) {
+							if(giveTime.getText().equals("")){
+								result = LoadFile_Menu.mainengine.aggregateByTimeUnit(LoadFile_Menu.objCollection,"SEASON" , btnIsSelected, text_field.getText());
+								PopUp_FileLoad.PopUpLoad("Stats created for : " +"Seasonly"+ " with " + btnIsSelected.toUpperCase() + " function");
+							}else if((giveTime.getText().equals("WINTER") || giveTime.getText().equals("SPRING") || giveTime.getText().equals("SUMMER") || giveTime.getText().equals("AUTUMN")) ){
+								result = LoadFile_Menu.mainengine.aggregateByTimeUnit(LoadFile_Menu.objCollection,giveTime.getText() , btnIsSelected, text_field.getText());
+								PopUp_FileLoad.PopUpLoad("Stats : " + giveTime.getText() + " & " + btnIsSelected.toUpperCase() + " function");
+							}else {
+								PopUp_FileLoad.PopUpLoad("Enter valid Season in upper.");
+								System.err.println("Invalid Season");
+							}
+						}else if(timeUnit_combobox.getSelectedIndex()==1){
+							if(giveTime.getText().equals("")) {
+								result = LoadFile_Menu.mainengine.aggregateByTimeUnit(LoadFile_Menu.objCollection, "MONTH", btnIsSelected, text_field.getText());
+								PopUp_FileLoad.PopUpLoad("Stats : " + " Monthly "+ " & " + btnIsSelected.toUpperCase() + " function");
+							}else if (giveTime.getText().equals("JAN") || giveTime.getText().equals("FEB") || giveTime.getText().equals("MAR") || giveTime.getText().equals("APR") || (giveTime.getText().equals("MAY") || giveTime.getText().equals("JUN") || giveTime.getText().equals("JUL") || giveTime.getText().equals("AUG")) ||(giveTime.getText().equals("SEP") || giveTime.getText().equals("OCT") || giveTime.getText().equals("NOV") || giveTime.getText().equals("DEC"))  ) {
+								result = LoadFile_Menu.mainengine.aggregateByTimeUnit(LoadFile_Menu.objCollection, giveTime.getText(), btnIsSelected, text_field.getText());
+								PopUp_FileLoad.PopUpLoad("Stats : " + giveTime.getText() + " & " + btnIsSelected.toUpperCase() + " function");
+							}else {
+								PopUp_FileLoad.PopUpLoad("Enter a month. (e.g JAN for January) ");
+								System.err.println("Invalid Month");
+							}
+						}else if (timeUnit_combobox.getSelectedIndex()==2) {
+							if(giveTime.getText().equals("")) {
+								result = LoadFile_Menu.mainengine.aggregateByTimeUnit(LoadFile_Menu.objCollection, "dayofweek", btnIsSelected,text_field.getText() );
+								PopUp_FileLoad.PopUpLoad("Stats : " + giveTime.getText() + " & " + btnIsSelected.toUpperCase() + " function");
+							}else if(giveTime.getText().equals("MONDAY") || giveTime.getText().equals("TUESDAY") || giveTime.getText().equals("WEDNESDAY") || giveTime.getText().equals("THURSDAY") || (giveTime.getText().equals("FRIDAY") || giveTime.getText().equals("SATURDAY") || giveTime.getText().equals("SUNDAY") )) {
+									result = LoadFile_Menu.mainengine.aggregateByTimeUnit(LoadFile_Menu.objCollection, giveTime.getText(), btnIsSelected,text_field.getText() );
+									PopUp_FileLoad.PopUpLoad("Stats :" + giveTime.getText() + " & " + btnIsSelected.toUpperCase() + " function");
+							}else {
+								PopUp_FileLoad.PopUpLoad("Enter valid day of week. (e.g SUNDAY) ");
+								System.err.println("Invalid Day of Week");
+							}
+						}else if (timeUnit_combobox.getSelectedIndex()==3) {
+							if(giveTime.getText().equals("AFTERNOON")||giveTime.getText().equals("EVENING") || giveTime.getText().equals("EARLY_MORNING") || giveTime.getText().equals("MORNING") || giveTime.getText().equals("NIGHT")) {
 								result = LoadFile_Menu.mainengine.aggregateByTimeUnit(LoadFile_Menu.objCollection, giveTime.getText(), btnIsSelected,text_field.getText() );
-								PopUp_FileLoad.PopUpLoad("Stats :" + giveTime.getText() + " & " + btnIsSelected.toUpperCase() + " function");
-						}else
-							PopUp_FileLoad.PopUpLoad("Enter valid day of week. (e.g SUNDAY) ");
-					}else if (timeUnit_combobox.getSelectedIndex()==3) {
-						if(giveTime.getText().equals("AFTERNOON")||giveTime.getText().equals("EVENING") || giveTime.getText().equals("EARLY_MORNING") || giveTime.getText().equals("MORNING") || giveTime.getText().equals("NIGHT")) {
-							result = LoadFile_Menu.mainengine.aggregateByTimeUnit(LoadFile_Menu.objCollection, giveTime.getText(), btnIsSelected,text_field.getText() );
-							PopUp_FileLoad.PopUpLoad("Stats : " + giveTime.getText() + " & " + btnIsSelected.toUpperCase() + " function");
-						}else
-							PopUp_FileLoad.PopUpLoad("Enter valid period of day. (e.g NIGHT)");
+								PopUp_FileLoad.PopUpLoad("Stats : " + giveTime.getText() + " & " + btnIsSelected.toUpperCase() + " function");
+							}else {
+								PopUp_FileLoad.PopUpLoad("Enter valid period of day. (e.g NIGHT)");
+								System.err.println("Invalid Period of Time");
+							}
+						}
+					}else {
+						PopUp_FileLoad.PopUpLoad("Try Again please.");
+						System.err.println("Error!! Aggregation function must be selected");
 					}
-				}else
-					PopUp_FileLoad.PopUpLoad("Try Again please.");
-	
-				System.out.println("Kitchen consumption result for " +giveTime.getText() + " : " + result.getAggregateMeterKitchen());
-				System.out.println("Laundry consumption result for " +giveTime.getText() + " : " + result.getAggregateMeterLaundry());
-				System.out.println("AC consumption result for " +giveTime.getText() + " : " + result.getAggregateMeterAC());
+					System.out.println("Kitchen consumption result for " +giveTime.getText() + " : " + result.getAggregateMeterKitchen());
+					System.out.println("Laundry consumption result for " +giveTime.getText() + " : " + result.getAggregateMeterLaundry());
+					System.out.println("AC consumption result for " +giveTime.getText() + " : " + result.getAggregateMeterAC());
+				}else {
+					PopUp_FileLoad.PopUpLoad("Load File first");
+					System.err.println("Error!! File must be loaded");
+				}
 			}
 		});
 		ConfirmStats_btn.setForeground(new Color(204, 0, 0));

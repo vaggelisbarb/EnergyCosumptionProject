@@ -106,8 +106,8 @@ public class LoadFile_Menu {
 		btnBrowse.setBounds(321, 107, 107, 20);
 		frmSoftwareDevelpomentAssignment.getContentPane().add(btnBrowse);
 	
-		JButton btnConfirm = new JButton("Confirm");
-		btnConfirm.addMouseListener(new MouseAdapter() {
+		JButton btnLoad = new JButton("Load");
+		btnLoad.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if(path!=null) {
@@ -137,10 +137,10 @@ public class LoadFile_Menu {
 					PopUp_FileLoad.PopUpLoad("enter_file");
 			}
 		});
-		btnConfirm.setFont(new Font("Manjari Bold", Font.BOLD, 14));
-		btnConfirm.setForeground(new Color(204, 0, 0));
-		btnConfirm.setBounds(159, 147, 117, 28);
-		frmSoftwareDevelpomentAssignment.getContentPane().add(btnConfirm);
+		btnLoad.setFont(new Font("Manjari Bold", Font.BOLD, 14));
+		btnLoad.setForeground(new Color(204, 0, 0));
+		btnLoad.setBounds(159, 147, 117, 28);
+		frmSoftwareDevelpomentAssignment.getContentPane().add(btnLoad);
 		
 		JButton btnReturn = new JButton("Return");
 		btnReturn.addMouseListener(new MouseAdapter() {
