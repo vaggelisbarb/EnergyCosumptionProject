@@ -14,11 +14,11 @@ import reporting.ReportOnHTML;
 public class TypeReportFactory {
 	
 	public IResultReporter createReporter(String type){
-		if (type.equals("ReportOnHTML"))
+		if (type.equals("html"))
 			return new ReportOnHTML();
-		else if(type.equals("ReportOnTxt"))
+		else if(type.equals("txt"))
 			return new ReportOnTxt();
-		else if(type.equals("ReportOnMd"))
+		else if(type.equals("md"))
 			return new ReportOnMD();
 		System.out.println("If the code got up to here, you passed a wrong argument to the ReporterFactory Factory");
 		return null;
