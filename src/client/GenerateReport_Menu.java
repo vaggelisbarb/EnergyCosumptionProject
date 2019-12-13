@@ -16,12 +16,12 @@ import javax.swing.JTextField;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
+import java.awt.Toolkit;
 
 public class GenerateReport_Menu {
 
 	private JFrame frmReport;
 	private JTextField pathFieldText;
-	private JTextField textField;
 
 	/**
 	 * Launch the application.
@@ -60,8 +60,8 @@ public class GenerateReport_Menu {
 		JLabel lblGenerateReportMenu = new JLabel("GENERATE REPORT MENU");
 		lblGenerateReportMenu.setHorizontalAlignment(SwingConstants.CENTER);
 		lblGenerateReportMenu.setForeground(new Color(204, 51, 0));
-		lblGenerateReportMenu.setFont(new Font("League Spartan Semibold", Font.BOLD, 17));
-		lblGenerateReportMenu.setBounds(131, 12, 189, 28);
+		lblGenerateReportMenu.setFont(new Font("Manjari Bold", Font.BOLD, 17));
+		lblGenerateReportMenu.setBounds(101, 0, 234, 28);
 		frmReport.getContentPane().add(lblGenerateReportMenu);
 		
 		JLabel lblChooseTypeOf = new JLabel("Choose type of report : ");
@@ -79,6 +79,7 @@ public class GenerateReport_Menu {
 		frmReport.getContentPane().add(lblEnterReportsFile);
 		
 		pathFieldText = new JTextField();
+		pathFieldText.setFont(new Font("FreeSans", Font.PLAIN, 14));
 		pathFieldText.setHorizontalAlignment(SwingConstants.CENTER);
 		pathFieldText.setToolTipText("Enter file path here or browse");
 		pathFieldText.setForeground(new Color(0, 0, 0));
@@ -139,10 +140,5 @@ public class GenerateReport_Menu {
 		BackGround.setHorizontalAlignment(SwingConstants.CENTER);
 		BackGround.setBounds(0, 0, 465, 291);
 		frmReport.getContentPane().add(BackGround);
-		
-		textField = new JTextField();
-		textField.setBounds(156, 145, 114, 19);
-		frmReport.getContentPane().add(textField);
-		textField.setColumns(10);
 	}
 }

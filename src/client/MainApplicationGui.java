@@ -132,9 +132,9 @@ public class MainApplicationGui {
 		
 		
 		JLabel lblEnergyConsumptionProject = new JLabel("ENERGY CONSUMPTION PROJECT");
-		lblEnergyConsumptionProject.setFont(new Font("League Spartan Semibold", Font.BOLD, 20));
+		lblEnergyConsumptionProject.setFont(new Font("Manjari Bold", Font.BOLD, 20));
 		lblEnergyConsumptionProject.setForeground(new Color(255, 51, 0));
-		lblEnergyConsumptionProject.setBounds(164, 2, 273, 70);
+		lblEnergyConsumptionProject.setBounds(142, 0, 333, 70);
 		frmSoftwareDevelopment.getContentPane().add(lblEnergyConsumptionProject);
 		
 		JLabel label = new JLabel("");

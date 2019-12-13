@@ -76,7 +76,7 @@ public class HistoryReports_Menu {
 		
 		reportsList.setVisibleRowCount(3);
 		reportsList.setForeground(new Color(0, 0, 0));
-		reportsList.setFont(new Font("League Spartan Light", Font.BOLD, 17));
+		reportsList.setFont(new Font("Manjari Regular", Font.BOLD, 16));
 		reportsList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		reportsList.setModel(new AbstractListModel() {
 			String[] values = new String[] {"Report 1asdasdada", "Report 2sdasdasdasd", "Report 3", "Report 4asdasda", "Report 5", "Report 6"};
@@ -95,16 +95,17 @@ public class HistoryReports_Menu {
 		scrollableTextArea.setPreferredSize(new Dimension(440,150));
 		scrollableTextArea.setViewportBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		
-		JLabel lblReports = new JLabel("Reports");
+		JLabel lblReports = new JLabel("REPORTS");
 		lblReports.setHorizontalTextPosition(SwingConstants.CENTER);
 		lblReports.setIconTextGap(5);
 		lblReports.setForeground(new Color(204, 0, 0));
-		lblReports.setFont(new Font("League Spartan Light", Font.BOLD, 17));
+		lblReports.setFont(new Font("Manjari Regular", Font.BOLD, 17));
 		lblReports.setHorizontalAlignment(SwingConstants.CENTER);
 		scrollableTextArea.setColumnHeaderView(lblReports);
 		
 		descriptionField = new JTextField();
-		descriptionField.setFont(new Font("League Spartan Semibold", Font.BOLD, 16));
+		descriptionField.setText("sdasd");
+		descriptionField.setFont(new Font("Manjari Regular", Font.BOLD | Font.ITALIC, 14));
 		descriptionField.setForeground(Color.RED);
 		descriptionField.setEditable(false);
 		descriptionField.setColumns(10);

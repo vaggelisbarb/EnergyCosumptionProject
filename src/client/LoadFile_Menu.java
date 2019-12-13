@@ -71,8 +71,8 @@ public class LoadFile_Menu {
 		JLabel label = new JLabel("LOAD FILE MENU");
 		label.setHorizontalAlignment(SwingConstants.CENTER);
 		label.setForeground(new Color(204, 51, 0));
-		label.setFont(new Font("League Spartan Semibold", Font.BOLD, 17));
-		label.setBounds(109, 12, 216, 51);
+		label.setFont(new Font("Manjari Bold", Font.BOLD, 17));
+		label.setBounds(106, 0, 216, 51);
 		frmSoftwareDevelpomentAssignment.getContentPane().add(label);
 		
 		JLabel label_1 = new JLabel("File Path");
@@ -83,6 +83,7 @@ public class LoadFile_Menu {
 		frmSoftwareDevelpomentAssignment.getContentPane().add(label_1);
 		
 		path_field = new JTextField();
+		path_field.setFont(new Font("Manjari Regular", Font.PLAIN, 13));
 		path_field.setHorizontalAlignment(SwingConstants.CENTER);
 		path_field.setForeground(new Color(0, 0, 0));
 		path_field.setToolTipText("Enter file path here or browse");

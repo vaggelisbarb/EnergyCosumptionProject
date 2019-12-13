@@ -59,7 +59,7 @@ public class PopUp_FileLoad {
 		textField = new JTextField();
 		textField.setEditable(false);
 		if(option.equals("OK"))
-			textField.setText("File has been loaded succesfully!!"+"\n");
+			textField.setText("File Loaded"+"\n");
 		else if(option.equals("Fail"))
 			textField.setText("Error : File cannot be loaded.");
 		else if(option.equals("enter_file"))
@@ -68,7 +68,7 @@ public class PopUp_FileLoad {
 			textField.setText(option);
 		
 		textField.setForeground(Color.BLACK);
-		textField.setFont(new Font("League Spartan", Font.BOLD, 17));
+		textField.setFont(new Font("Comfortaa", Font.BOLD, 15));
 		textField.setHorizontalAlignment(SwingConstants.CENTER);
 		textField.setBounds(50, 32, 282, 32);
 		frmMessage.getContentPane().add(textField);
@@ -88,7 +88,7 @@ public class PopUp_FileLoad {
 		frmMessage.getContentPane().add(ok_btn);
 		
 		JLabel label = new JLabel("");
-		label.setIcon(new ImageIcon("/home/vaggelisbarb/Eclipse_Projects/2019_2020_<2766>_<2784>_<2821>/images/abstract-technology-particle-background_52683-25766.jpg"));
+		label.setIcon(new ImageIcon("images/abstract-technology-particle-background_52683-25766.jpg"));
 		label.setHorizontalAlignment(SwingConstants.CENTER);
 		label.setBounds(0, 0, 402, 181);
 		frmMessage.getContentPane().add(label);

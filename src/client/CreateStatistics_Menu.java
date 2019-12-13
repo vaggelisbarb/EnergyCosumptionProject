@@ -7,7 +7,7 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
 import datamodel.IResult;
-import mainengine.IMainEngine;
+import datamodel.ResultFactory;
 
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
@@ -26,37 +26,16 @@ import java.awt.event.MouseEvent;
 public class CreateStatistics_Menu {
 	
 	static IResult result;
+	static ResultFactory resultFactory;
 	private JFrame frmStats;
 	JTextField text_field;
 	
 	//Options of the timeUnit_combobox
 	private String[] timeUnitOptions= {"Season" , "Month" , "WeekDay" , "Day Period"};
 	
-	//Options of Season
-	private String [] seasonOption = {"Winter" , "Spring" , "Summer" , "Autumn"};
-	
-	//Options of Month
-	private String [] monthOption = {"January",
-									"February",
-									"March",
-									"April",
-									"May",
-									"June",
-									"July",
-									"August",
-									"September",
-									"October",
-									"November",
-									"December"};
-
-	//Options of WeekDay
-	private String [] weekdayOption = {"MON","TUE","WED","THU","FRI","SAT","SUN"};
-	
-	//Option of Day Period
-	private String [] dayPeriodOption = {"Early Morning (05.00-09.00) ","Morning (09.00-13.00) ","Afternoon (13.00-17.00)", "Evening (17.00-21.00) ","Night (21.00-05.00) "};
 	
 	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField giveTime;
 	/**
 	 * Launch the application.
 	 */
@@ -94,9 +73,9 @@ public class CreateStatistics_Menu {
 		frmStats.getContentPane().setLayout(null);
 		
 		JLabel lblCreateStatisticsMenu = new JLabel("CREATE STATISTICS MENU");
-		lblCreateStatisticsMenu.setFont(new Font("League Spartan Semibold", Font.BOLD, 17));
+		lblCreateStatisticsMenu.setFont(new Font("Manjari Bold", Font.BOLD, 17));
 		lblCreateStatisticsMenu.setForeground(new Color(204, 51, 0));
-		lblCreateStatisticsMenu.setBounds(131, 12, 189, 28);
+		lblCreateStatisticsMenu.setBounds(113, 0, 231, 28);
 		frmStats.getContentPane().add(lblCreateStatisticsMenu);
 		
 		JSplitPane aggFunction_split = new JSplitPane();
@@ -121,11 +100,12 @@ public class CreateStatistics_Menu {
 		aggFunction.add(Sum_btn);
 		
 
-		textField_1 = new JTextField();
-		textField_1.setVisible(false);
-		textField_1.setBounds(249, 116, 162, 32);
-		frmStats.getContentPane().add(textField_1);
-		textField_1.setColumns(10);
+		giveTime = new JTextField();
+		giveTime.setFont(new Font("Manjari Regular", Font.PLAIN, 14));
+		giveTime.setVisible(false);
+		giveTime.setBounds(249, 116, 162, 32);
+		frmStats.getContentPane().add(giveTime);
+		giveTime.setColumns(10);
 
 		
 		JComboBox timeUnit_combobox = new JComboBox(timeUnitOptions);
@@ -136,19 +116,19 @@ public class CreateStatistics_Menu {
 				int selected = timeUnit_combobox.getSelectedIndex();
 				
 				if (selected == 0) {
-					textField_1.setVisible(true);
-					textField_1.setToolTipText("Enter ONLY specific season. e.g WINTER,SUMMER,SPRING,AUTUMN");
+					giveTime.setVisible(true);
+					giveTime.setToolTipText("Enter ONLY specific season. e.g WINTER,SUMMER,SPRING,AUTUMN");
 				}else if (selected == 1) {
-					textField_1.setVisible(true);
-					textField_1.setToolTipText("Enter ONLY specific month. e.g JAN for January");
+					giveTime.setVisible(true);
+					giveTime.setToolTipText("Enter ONLY specific month. e.g JAN for January");
 				}else if (selected == 2) {
-					textField_1.setVisible(true);
-					textField_1.setToolTipText("Enter ONLY specific day of week. e.g SUNDAY ");
+					giveTime.setVisible(true);
+					giveTime.setToolTipText("Enter ONLY specific day of week. e.g SUNDAY ");
 				}else if (selected == 3) {
-					textField_1.setVisible(true);
-					textField_1.setToolTipText("Enter ONLY specific period of day. e.g NIGHT");
+					giveTime.setVisible(true);
+					giveTime.setToolTipText("Enter ONLY specific period of day. e.g NIGHT");
 				}else {
-					textField_1.setVisible(false);
+					giveTime.setVisible(false);
 				}
 			}
 		});
@@ -178,9 +158,9 @@ public class CreateStatistics_Menu {
 		
 		text_field = new JTextField();
 		text_field.setToolTipText("Give a description text of the result.This will be displayed in the report");
-		text_field.setFont(new Font("League Spartan Light", Font.BOLD, 14));
+		text_field.setFont(new Font("Manjari Regular", Font.ITALIC, 14));
 		text_field.setForeground(Color.BLACK);
-		text_field.setBackground(Color.LIGHT_GRAY);
+		text_field.setBackground(Color.WHITE);
 		text_field.setBounds(28, 189, 383, 28);
 		frmStats.getContentPane().add(text_field);
 		text_field.setColumns(10);
@@ -198,46 +178,46 @@ public class CreateStatistics_Menu {
 
 				if(btnIsSelected!=null) {
 					if(timeUnit_combobox.getSelectedIndex()==0) {
-						if(textField_1.getText().equals("")){
+						if(giveTime.getText().equals("")){
 							result = LoadFile_Menu.mainengine.aggregateByTimeUnit(LoadFile_Menu.objCollection,"SEASON" , btnIsSelected, text_field.getText());
-							PopUp_FileLoad.PopUpLoad("Stats created for : " + textField_1.getText() + " with " + btnIsSelected.toUpperCase() + " function");
-						}else if((textField_1.getText().equals("WINTER") || textField_1.getText().equals("SPRING") || textField_1.getText().equals("SUMMER") || textField_1.getText().equals("AUTUMN")) ){
-							result = LoadFile_Menu.mainengine.aggregateByTimeUnit(LoadFile_Menu.objCollection,textField_1.getText() , btnIsSelected, text_field.getText());
-							PopUp_FileLoad.PopUpLoad("Stats created for : " + textField_1.getText() + " with " + btnIsSelected.toUpperCase() + " function");
+							PopUp_FileLoad.PopUpLoad("Stats created for : " +"Seasonly"+ " with " + btnIsSelected.toUpperCase() + " function");
+						}else if((giveTime.getText().equals("WINTER") || giveTime.getText().equals("SPRING") || giveTime.getText().equals("SUMMER") || giveTime.getText().equals("AUTUMN")) ){
+							result = LoadFile_Menu.mainengine.aggregateByTimeUnit(LoadFile_Menu.objCollection,giveTime.getText() , btnIsSelected, text_field.getText());
+							PopUp_FileLoad.PopUpLoad("Stats : " + giveTime.getText() + " & " + btnIsSelected.toUpperCase() + " function");
 						}else
 							PopUp_FileLoad.PopUpLoad("Enter valid Season in upper.");
 					}else if(timeUnit_combobox.getSelectedIndex()==1){
-						if(textField_1.getText().equals("")) {
+						if(giveTime.getText().equals("")) {
 							result = LoadFile_Menu.mainengine.aggregateByTimeUnit(LoadFile_Menu.objCollection, "MONTH", btnIsSelected, text_field.getText());
-							PopUp_FileLoad.PopUpLoad("Stats created for : " + textField_1.getText() + " with " + btnIsSelected.toUpperCase() + " function");
-						}else if (textField_1.getText().equals("JAN") || textField_1.getText().equals("FEB") || textField_1.getText().equals("MAR") || textField_1.getText().equals("APR") || (textField_1.getText().equals("MAY") || textField_1.getText().equals("JUN") || textField_1.getText().equals("JUL") || textField_1.getText().equals("AUG")) ||(textField_1.getText().equals("SEP") || textField_1.getText().equals("OCT") || textField_1.getText().equals("NOV") || textField_1.getText().equals("DEC"))  ) {
-							result = LoadFile_Menu.mainengine.aggregateByTimeUnit(LoadFile_Menu.objCollection, textField_1.getText(), btnIsSelected, text_field.getText());
-							PopUp_FileLoad.PopUpLoad("Stats created for : " + textField_1.getText() + " with " + btnIsSelected.toUpperCase() + " function");
+							PopUp_FileLoad.PopUpLoad("Stats : " + " Monthly "+ " & " + btnIsSelected.toUpperCase() + " function");
+						}else if (giveTime.getText().equals("JAN") || giveTime.getText().equals("FEB") || giveTime.getText().equals("MAR") || giveTime.getText().equals("APR") || (giveTime.getText().equals("MAY") || giveTime.getText().equals("JUN") || giveTime.getText().equals("JUL") || giveTime.getText().equals("AUG")) ||(giveTime.getText().equals("SEP") || giveTime.getText().equals("OCT") || giveTime.getText().equals("NOV") || giveTime.getText().equals("DEC"))  ) {
+							result = LoadFile_Menu.mainengine.aggregateByTimeUnit(LoadFile_Menu.objCollection, giveTime.getText(), btnIsSelected, text_field.getText());
+							PopUp_FileLoad.PopUpLoad("Stats : " + giveTime.getText() + " & " + btnIsSelected.toUpperCase() + " function");
 						}else
 							PopUp_FileLoad.PopUpLoad("Enter a month. (e.g JAN for January) ");
 						
 					}else if (timeUnit_combobox.getSelectedIndex()==2) {
-						if(textField_1.getText().equals("")) {
+						if(giveTime.getText().equals("")) {
 							result = LoadFile_Menu.mainengine.aggregateByTimeUnit(LoadFile_Menu.objCollection, "dayofweek", btnIsSelected,text_field.getText() );
-							PopUp_FileLoad.PopUpLoad("Stats created for : " + textField_1.getText() + " with " + btnIsSelected.toUpperCase() + " function");
-						}else if(textField_1.getText().equals("MONDAY") || textField_1.getText().equals("TUESDAY") || textField_1.getText().equals("WEDNESDAY") || textField_1.getText().equals("THURSDAY") || (textField_1.getText().equals("FRIDAY") || textField_1.getText().equals("SATURDAY") || textField_1.getText().equals("SUNDAY") )) {
-								result = LoadFile_Menu.mainengine.aggregateByTimeUnit(LoadFile_Menu.objCollection, textField_1.getText(), btnIsSelected,text_field.getText() );
-								PopUp_FileLoad.PopUpLoad("Stats created for : " + textField_1.getText() + " with " + btnIsSelected.toUpperCase() + " function");
+							PopUp_FileLoad.PopUpLoad("Stats : " + giveTime.getText() + " & " + btnIsSelected.toUpperCase() + " function");
+						}else if(giveTime.getText().equals("MONDAY") || giveTime.getText().equals("TUESDAY") || giveTime.getText().equals("WEDNESDAY") || giveTime.getText().equals("THURSDAY") || (giveTime.getText().equals("FRIDAY") || giveTime.getText().equals("SATURDAY") || giveTime.getText().equals("SUNDAY") )) {
+								result = LoadFile_Menu.mainengine.aggregateByTimeUnit(LoadFile_Menu.objCollection, giveTime.getText(), btnIsSelected,text_field.getText() );
+								PopUp_FileLoad.PopUpLoad("Stats :" + giveTime.getText() + " & " + btnIsSelected.toUpperCase() + " function");
 						}else
 							PopUp_FileLoad.PopUpLoad("Enter valid day of week. (e.g SUNDAY) ");
 					}else if (timeUnit_combobox.getSelectedIndex()==3) {
-						if(textField_1.getText().equals("AFTERNOON")||textField_1.getText().equals("EVENING") || textField_1.getText().equals("EARLY_MORNING") || textField_1.getText().equals("MORNING") || textField_1.getText().equals("NIGHT")) {
-							result = LoadFile_Menu.mainengine.aggregateByTimeUnit(LoadFile_Menu.objCollection, textField_1.getText(), btnIsSelected,text_field.getText() );
-							PopUp_FileLoad.PopUpLoad("Stats created for : " + textField_1.getText() + " with " + btnIsSelected.toUpperCase() + " function");
+						if(giveTime.getText().equals("AFTERNOON")||giveTime.getText().equals("EVENING") || giveTime.getText().equals("EARLY_MORNING") || giveTime.getText().equals("MORNING") || giveTime.getText().equals("NIGHT")) {
+							result = LoadFile_Menu.mainengine.aggregateByTimeUnit(LoadFile_Menu.objCollection, giveTime.getText(), btnIsSelected,text_field.getText() );
+							PopUp_FileLoad.PopUpLoad("Stats : " + giveTime.getText() + " & " + btnIsSelected.toUpperCase() + " function");
 						}else
 							PopUp_FileLoad.PopUpLoad("Enter valid period of day. (e.g NIGHT)");
 					}
 				}else
 					PopUp_FileLoad.PopUpLoad("Try Again please.");
 	
-				System.out.println("Kitchen consumption result for " +textField_1.getText() + " : " + result.getAggregateMeterKitchen());
-				System.out.println("Laundry consumption result for " +textField_1.getText() + " : " + result.getAggregateMeterLaundry());
-				System.out.println("AC consumption result for " +textField_1.getText() + " : " + result.getAggregateMeterAC());
+				System.out.println("Kitchen consumption result for " +giveTime.getText() + " : " + result.getAggregateMeterKitchen());
+				System.out.println("Laundry consumption result for " +giveTime.getText() + " : " + result.getAggregateMeterLaundry());
+				System.out.println("AC consumption result for " +giveTime.getText() + " : " + result.getAggregateMeterAC());
 			}
 		});
 		ConfirmStats_btn.setForeground(new Color(204, 0, 0));
@@ -257,7 +237,6 @@ public class CreateStatistics_Menu {
 		Background.setHorizontalAlignment(SwingConstants.CENTER);
 		Background.setBounds(0, 0, 465, 291);
 		frmStats.getContentPane().add(Background);
-		
 		
 	}
 }
