@@ -49,6 +49,7 @@ public class MainEngine implements IMainEngine {
 		aggregatorfactory = new AggregatorFactory();
 	}
 
+	
 	@Override
 	public int loadData(String fileName, String delimeter, Boolean hasHeaderLine, int numFields,
 			ArrayList<MeasurementRecord> objCollection) {
@@ -67,11 +68,9 @@ public class MainEngine implements IMainEngine {
 	public int reportResultInFile(IResult result, String reportType, String filename) {
 		TypeReportFactory reporterFactory = new TypeReportFactory();
 		IResultReporter reporter = reporterFactory.createReporter(reportType);
+		
+		reporter.reportResultInFile(result, filename);
 		return 0;
-	}
-
-	public ArrayList<MeasurementRecord> getObjCollection() {
-		return objCollection;
 	}
 
 }
