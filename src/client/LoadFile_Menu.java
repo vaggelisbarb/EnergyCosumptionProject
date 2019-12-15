@@ -23,10 +23,9 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 public class LoadFile_Menu {
-
-	static MainEngineFactory mainenginefactory; 
-	static IMainEngine mainengine;
-	static ArrayList<MeasurementRecord> objCollection ;
+	
+	// Global ArrayList of MeasurementRecords that is been initialized when a new file is been loaded
+	static ArrayList<MeasurementRecord> objCollection;
 	
 	private JFrame frmSoftwareDevelpomentAssignment;
 	private JTextField path_field;
@@ -111,22 +110,18 @@ public class LoadFile_Menu {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if(path!=null) {
-					
-					// Create a new IMainEngine via MainEngineFactory ("Connection" of packages client-mainengine has been created)
 					objCollection = new ArrayList<MeasurementRecord>();
-					mainenginefactory = new MainEngineFactory();
-					mainengine = mainenginefactory.createMainEngine("MainEngine");
 					
-					
-					// Checks the extension of the file and giving the right delimeter as argument to the method
+					// Checks the extension of the file and giving the right delimiter as argument to the method
 					String extension = null;
 					int lastDotIndex = path.lastIndexOf(".");
 					extension = path.substring(lastDotIndex+1);
 					
+					
 					if(extension.equals("tsv"))
-						isLoaded = mainengine.loadData(path, "\t", false, 9, objCollection);
+						isLoaded = MainApplicationGui.mainengine.loadData(path, "\t", false, 9, objCollection);
 					else if(extension.equals("txt"))
-						isLoaded = mainengine.loadData(path, ";", true, 9, objCollection);
+						isLoaded = MainApplicationGui.mainengine.loadData(path, ";", true, 9, objCollection);
 					
 					// Message window box with the appropriate message
 					if(isLoaded!=0){

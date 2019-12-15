@@ -13,12 +13,15 @@ import javax.swing.JButton;
 import javax.swing.JTextField;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 
 public class GenerateReport_Menu {
+
+	private LocalDateTime dateTime;
+	private DateTimeFormatter formatter;
 	
-	
-	static HashMap<String, String> reportDetailsMap;
 	private JFrame frmReport;
 	private JTextField pathFieldText;
 
@@ -42,7 +45,6 @@ public class GenerateReport_Menu {
 	 * Create the application.
 	 */
 	public GenerateReport_Menu() {
-		reportDetailsMap = new HashMap<String, String>();
 		initialize();
 	}
 
@@ -95,9 +97,15 @@ public class GenerateReport_Menu {
 			public void mouseClicked(MouseEvent e) {
 				if(CreateStatistics_Menu.result!=null) {
 					if(pathFieldText!=null) {
-						if(LoadFile_Menu.mainengine.reportResultInFile(CreateStatistics_Menu.result, "txt", pathFieldText.getText())==0) {
+						if(MainApplicationGui.mainengine.reportResultInFile(CreateStatistics_Menu.result, "txt", pathFieldText.getText())==0) { 
 							PopUp_FileLoad.PopUpLoad(".TXT report generated");
-							//HistoryReports_Menu.historyReports.put(CreateStatistics_Menu.result.getDescription(), "Aggregate function : "+CreateStatistics_Menu.result.getAggregateFunction()+". \nFile path :  "+ pathFieldText.getText());
+							
+							// Get the current time and date
+							dateTime = LocalDateTime.now();
+							formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+							
+							MainApplicationGui.reportsCounter++;
+							MainApplicationGui.reportsMap.put("Report " + MainApplicationGui.reportsCounter, "Description : " + CreateStatistics_Menu.result.getDescription()+"\nFile path : "+pathFieldText.getText()+"\nTime : "+dateTime.format(formatter));
 						}
 					}else
 						PopUp_FileLoad.PopUpLoad("Give valid path");
@@ -120,8 +128,14 @@ public class GenerateReport_Menu {
 			public void mouseClicked(MouseEvent e) {
 				if(CreateStatistics_Menu.result!=null) {
 					if(pathFieldText!=null) {
-						if(LoadFile_Menu.mainengine.reportResultInFile(CreateStatistics_Menu.result, "md", pathFieldText.getText())==0);
+						if(MainApplicationGui.mainengine.reportResultInFile(CreateStatistics_Menu.result, "md", pathFieldText.getText())==0) {
 							PopUp_FileLoad.PopUpLoad(".MD report generated");
+							dateTime = LocalDateTime.now();
+							formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+							
+							MainApplicationGui.reportsCounter++;
+							MainApplicationGui.reportsMap.put("Report " + MainApplicationGui.reportsCounter, "Description : " + CreateStatistics_Menu.result.getDescription()+"\nFile path : "+pathFieldText.getText()+"\nTime : "+dateTime.format(formatter));						
+						}
 					}else
 						PopUp_FileLoad.PopUpLoad("Give valid path");
 				}else {
@@ -160,8 +174,14 @@ public class GenerateReport_Menu {
 			public void mouseClicked(MouseEvent e) {
 				if(CreateStatistics_Menu.result!=null) {
 					if(pathFieldText!=null) {
-						if(LoadFile_Menu.mainengine.reportResultInFile(CreateStatistics_Menu.result, "html", pathFieldText.getText())==0);
+						if(MainApplicationGui.mainengine.reportResultInFile(CreateStatistics_Menu.result, "html", pathFieldText.getText())==0) {
 							PopUp_FileLoad.PopUpLoad(".HTML report generated");
+							dateTime = LocalDateTime.now();
+							formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+							
+							MainApplicationGui.reportsCounter++;
+							MainApplicationGui.reportsMap.put("Report " + MainApplicationGui.reportsCounter, "Description : " + CreateStatistics_Menu.result.getDescription()+"\nFile path : "+pathFieldText.getText()+"\nTime : "+dateTime.format(formatter));
+						}
 					}else
 						PopUp_FileLoad.PopUpLoad("Give valid path");
 				}else {

@@ -12,15 +12,27 @@ import javax.swing.ImageIcon;
 
 import javax.swing.JLabel;
 
+import datamodel.MeasurementRecord;
 import mainengine.IMainEngine;
 import mainengine.MainEngineFactory;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class MainApplicationGui {
 	
+	/** Global MainEngine and MainEngineFactory that are visible through all the classes of client package.
+	 *  Global HasMap with keys : String of #of the reports that have been generated, Values : Details of this report.
+	 */
+	static MainEngineFactory mainenginefactory; 
+	static IMainEngine mainengine;
+	static HashMap<String,String> reportsMap;
+	static int reportsCounter;
+	
 	private JFrame frmSoftwareDevelopment;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -36,11 +48,12 @@ public class MainApplicationGui {
 			}
 		});
 	}
+	
 
-	/**
-	 * Create the application.
-	 */
 	public MainApplicationGui() {
+		mainenginefactory = new MainEngineFactory();
+		mainengine = mainenginefactory.createMainEngine("MainEngine");
+		reportsMap = new HashMap<String, String>();
 		initialize();
 	}
 
