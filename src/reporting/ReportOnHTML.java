@@ -28,6 +28,7 @@ public class ReportOnHTML implements IResultReporter{
 		private String description;
 		private String aggFunction;
 	
+	
 	/**
 		 * 
 		 */
