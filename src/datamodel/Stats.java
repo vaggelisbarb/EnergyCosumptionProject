@@ -9,6 +9,10 @@ import java.util.Set;
 
 import org.apache.commons.math3.stat.descriptive.DescriptiveStatistics;
 
+/**
+ * Class responsible for creating
+ *
+ */
 public class Stats {
 	private String description;
 	private String aggFunction;

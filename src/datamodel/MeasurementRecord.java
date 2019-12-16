@@ -1,6 +1,10 @@
 package datamodel;
 
 
+/** Class that represents one line of the file,and holds details such as Date,Time,Kitchen consumption,Laundry consumption,A/C consumption
+ * 
+ *
+ */
 public class MeasurementRecord {
 	private String fulldate;
 	private String fulltime;
@@ -24,7 +28,7 @@ public class MeasurementRecord {
 		this.acCons = acCons;
 	}
 
-	// Concat Date ant Time strings with a "," between them
+	// Concat Date and Time strings with a "," between them
 	public String getDateTime() {
 		String comma = ",";
 		String fullDateAndComma = this.fulldate.concat(comma);
@@ -34,37 +38,21 @@ public class MeasurementRecord {
 	public String getFulldate() {
 		return fulldate;
 	}
-	public void setFulldate(String fulldate) {
-		this.fulldate = fulldate;
-	}
 
 	public String getFulltime() {
 		return fulltime;
-	}
-	public void setFulltime(String fulltime) {
-		this.fulltime = fulltime;
 	}
 
 	public double getKitchenCons() {
 		return kitchenCons;
 	}
-	public void setKitchenCons(double kitchenCons) {
-		this.kitchenCons = kitchenCons;
-	}
-
+	
 	public double getLaundryCons() {
 		return laundryCons;
 	}
-	public void setLaundryCons(double laundryCons) {
-		this.laundryCons = laundryCons;
-	}
-
+	
 	public double getAcCons() {
 		return acCons;
-	}
-	public void setAcCons(double acCons) {
-
-		this.acCons = acCons;
 	}
 	
 }

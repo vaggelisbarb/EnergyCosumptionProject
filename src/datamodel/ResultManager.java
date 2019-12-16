@@ -14,8 +14,8 @@ import java.util.HashMap;
 
 
 
-/**
- * @author vaggelisbarb
+/**Class which is responsible of handling the IResult instances
+ * 
  *
  */
 public class ResultManager implements IResult{
@@ -33,24 +33,26 @@ public class ResultManager implements IResult{
 		recordsHashMap = new HashMap<String, ArrayList<MeasurementRecord>>(); 
 	}
 	
-	
 	public ResultManager(String description, String aggFunction) {
 		recordsHashMap = new HashMap<String, ArrayList<MeasurementRecord>>(); 
 		this.description = description;
 		this.aggFunction = aggFunction;
 	}
 	
-
-
-
-
-
-	// Convert date from input String to Date object	
+	/**
+	 * @param timeUnit a String with the given timeUnit
+	 * @return a LocalDateTime object. This method converts a String date to LocalDateTime object
+	 */
 	public LocalDateTime convertStringToDate(String timeUnit) {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy,HH:mm:ss");
 		LocalDateTime dateTime = LocalDateTime.parse(timeUnit, formatter);
 		return dateTime;
 	}
+	
+	/**
+	 * @param timeUnit a String with the given timeUnit
+	 * @return an array of numbers as Strings depending of the timeUnit.This method is used to get the months of the Seasons
+	 */
 	public String[] isSeason(String timeUnit) {
 		
 		switch (timeUnit) {
@@ -74,6 +76,10 @@ public class ResultManager implements IResult{
 		
 	}
 	
+	/**
+	 * @param timeUnit a String with the given timeUnit
+	 * @return an array of numbers as Strings depending of the timeUnit.This method is used to get the days of the week
+	 */
 	public String[] isWeek(String timeUnit) {
 		switch (timeUnit) {
 		case "MONDAY":
@@ -104,6 +110,10 @@ public class ResultManager implements IResult{
 		return null;
 	}
 	
+	/**
+	 * @param timeUnit a String with the given timeUnit
+	 * @return an array of numbers as Strings depending of the timeUnit.This method is used to get the month of the year
+	 */
 	public String[] isMonth(String timeUnit) {
 		switch (timeUnit) {
 		case "JAN":
@@ -142,13 +152,17 @@ public class ResultManager implements IResult{
 		case "DEC":
 			String[] decArr= {"12"}; 
 			return decArr;		
-		case "MONTH" :
+		case "MONTHS" :
 			String[] monthArr = {"1","2","3","4","5","6","7","8","9","10","11","12"};
 			return monthArr;
 		}
 		return null;
 	}
 	
+	/**
+	 * @param timeUnit a String with the given timeUnit
+	 * @return an array of numbers as Strings depending of the timeUnit.This method is used to get the specific ours of a period of the day
+	 */
 	public String[] isPeriodOfDay(String timeUnit) {
 		switch (timeUnit) {
 		case "NIGHT" :
@@ -170,6 +184,12 @@ public class ResultManager implements IResult{
 		return null;
 	}
 
+	/**
+	 * @param map a HashMap that contains keys a String of the timeUnit and values the respective ArrayList<MeasurementRecord> 
+	 * @param record a MeasurementRecord object
+	 * @param unit a String of the requested timeUnit which are added as keys to the HashMap if they not already exists
+	 * @return the size of the HashMap after the insertion of the record object
+	 */
 	public int mappingRecords(HashMap<String, ArrayList<MeasurementRecord>> map,MeasurementRecord record,String unit) {
 		if(!map.containsKey(unit)) {
 			ArrayList<MeasurementRecord> list = new ArrayList<MeasurementRecord>();
@@ -247,7 +267,8 @@ public class ResultManager implements IResult{
 	@Override
 	public HashMap<String, Double> getAggregateMeterKitchen() {
 			statistics = new Stats(description, aggFunction, recordsHashMap);
-			return statistics.computeStats("Kitchen");
+			this.kitchenMap = statistics.computeStats("Kitchen");
+			return kitchenMap;
 	}
 
 	@Override
