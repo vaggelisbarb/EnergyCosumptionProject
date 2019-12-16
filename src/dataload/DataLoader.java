@@ -6,21 +6,16 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
+
 import datamodel.MeasurementRecord;
 
-public class DataLoader implements ILoader <MeasurementRecord>{
-	private String fileName;
+public class DataLoader implements ILoader <MeasurementRecord> {
 	
 
 	public DataLoader() {
 		
 	}
 	
-
-	public DataLoader(String fileName) {
-		this.fileName = fileName;
-	}
-
 
 	@Override
 	public int load(String fileName, String delimeter, boolean hasHeaderLine, int numFields, ArrayList<MeasurementRecord> objCollection) {
@@ -40,7 +35,7 @@ public class DataLoader implements ILoader <MeasurementRecord>{
 
 		int count = 0;
 
-		//process the title of the csv
+		//process the title of the txt
 		if(hasHeaderLine){
 			String titleLine = inputStream.nextLine();
 			count++;
@@ -54,9 +49,9 @@ public class DataLoader implements ILoader <MeasurementRecord>{
 			StringTokenizer tokenizer = new StringTokenizer(line, delimeter);
 			if(tokenizer.countTokens() != numFields){
 				System.out.println("Wrong Input format in file " + fileName +". I found " + tokenizer.countTokens() + " values, but I expect " + numFields + " values per row!");
-				//				System.exit(0);				
+				// TODO accept only valid lines of input file
+				
 			}
-
 			String[] tokens =  new String[numFields];
 			for (int i=0; i< numFields;i++){
 				tokens[i] = tokenizer.nextToken();
@@ -70,12 +65,18 @@ public class DataLoader implements ILoader <MeasurementRecord>{
 				System.out.println("Objects created : "+ objConstructionErrorCode);
 				System.exit(0);
 			}
-		}		
+		}	
 		inputStream.close();
 		System.out.println("Processed " + count + " rows and loaded " + objCollection.size() + " objects.");
 		return count;
 	}
 	
+	
+	/**
+	 * @param tokens Array of Strings . Basically are the columns elements
+	 * @param objCollection an ArrayList that holds the MeasurementRecord objects
+	 * @return the size of this collection
+	 */
 	public int constructRecordsFromRow(String [] tokens, ArrayList<MeasurementRecord> objCollection) {
 		String fullDate;
 		String fullTime;

@@ -6,6 +6,5 @@ import datamodel.MeasurementRecord;
 public class DataLoaderFactory {
 	public ILoader <MeasurementRecord> createDataLoader(){
 					return new DataLoader();
-		
 	}
 }
