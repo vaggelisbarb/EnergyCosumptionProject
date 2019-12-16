@@ -4,8 +4,6 @@
 package mainengine;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-
 import datamodel.IResult;
 import datamodel.MeasurementRecord;
 import reporting.IResultReporter;
@@ -15,10 +13,6 @@ import timeaggregation.IAggregator;
 import dataload.DataLoaderFactory;
 import dataload.ILoader;
 
-/**
- * @author vaggelisbarb
- *
- */
 
 public class MainEngine implements IMainEngine {
 	
