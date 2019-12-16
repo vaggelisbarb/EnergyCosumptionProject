@@ -1,25 +1,18 @@
 package client;
 
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JButton;
 import java.awt.Color;
 import java.awt.Font;
-
 import javax.swing.ImageIcon;
-
-
 import javax.swing.JLabel;
-
-import datamodel.MeasurementRecord;
 import mainengine.IMainEngine;
 import mainengine.MainEngineFactory;
-
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
 import java.util.HashMap;
+import javax.swing.SwingConstants;
 
 public class MainApplicationGui {
 	
@@ -92,6 +85,13 @@ public class MainApplicationGui {
 				CreateStatistics_Menu.NewScreen2();
 			}
 		});
+		
+		JLabel lblNewLabel = new JLabel("v.0 version");
+		lblNewLabel.setForeground(Color.WHITE);
+		lblNewLabel.setFont(new Font("Manjari Regular", Font.PLAIN, 16));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setBounds(260, 259, 116, 15);
+		frmSoftwareDevelopment.getContentPane().add(lblNewLabel);
 		stats_button.setToolTipText("Click to create statistics");
 		stats_button.setIcon(new ImageIcon("images/Statistics-icon.png"));
 		stats_button.setForeground(new Color(204, 0, 0));

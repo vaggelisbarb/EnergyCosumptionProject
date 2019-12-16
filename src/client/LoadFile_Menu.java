@@ -12,8 +12,6 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 
 import datamodel.MeasurementRecord;
-import mainengine.IMainEngine;
-import mainengine.MainEngineFactory;
 
 import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;

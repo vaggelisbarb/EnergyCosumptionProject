@@ -5,7 +5,6 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
-import datamodel.IResult;
 import javax.swing.ImageIcon;
 import java.awt.Font;
 import java.awt.Color;
@@ -15,7 +14,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.HashMap;
 
 public class GenerateReport_Menu {
 
@@ -105,7 +103,7 @@ public class GenerateReport_Menu {
 							formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
 							
 							MainApplicationGui.reportsCounter++;
-							MainApplicationGui.reportsMap.put("Report " + MainApplicationGui.reportsCounter, "Description : " + CreateStatistics_Menu.result.getDescription()+"\nFile path : "+pathFieldText.getText()+"\nTime : "+dateTime.format(formatter));
+							MainApplicationGui.reportsMap.put("Report " + MainApplicationGui.reportsCounter, "~Description : " + CreateStatistics_Menu.result.getDescription()+"\n\n~File path : "+pathFieldText.getText()+"\n\n~Time generated: "+dateTime.format(formatter));
 						}
 					}else
 						PopUp_FileLoad.PopUpLoad("Give valid path");
@@ -134,7 +132,7 @@ public class GenerateReport_Menu {
 							formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
 							
 							MainApplicationGui.reportsCounter++;
-							MainApplicationGui.reportsMap.put("Report " + MainApplicationGui.reportsCounter, "Description : " + CreateStatistics_Menu.result.getDescription()+"\nFile path : "+pathFieldText.getText()+"\nTime : "+dateTime.format(formatter));						
+							MainApplicationGui.reportsMap.put("Report " + MainApplicationGui.reportsCounter, "~Description : " + CreateStatistics_Menu.result.getDescription()+"\n\n~File path : "+pathFieldText.getText()+"\n\n~Time generated : "+dateTime.format(formatter));						
 						}
 					}else
 						PopUp_FileLoad.PopUpLoad("Give valid path");
@@ -157,8 +155,7 @@ public class GenerateReport_Menu {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 					String path = null;
-					MyCustomFileChooserRunner fr = new MyCustomFileChooserRunner();
-					path = fr.MyCustomFileChooserScreen("Files");
+					path = MyCustomFileChooserRunner.MyCustomFileChooserScreen("File");
 					pathFieldText.setText(path);
 			}
 		});
@@ -180,7 +177,7 @@ public class GenerateReport_Menu {
 							formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
 							
 							MainApplicationGui.reportsCounter++;
-							MainApplicationGui.reportsMap.put("Report " + MainApplicationGui.reportsCounter, "Description : " + CreateStatistics_Menu.result.getDescription()+"\nFile path : "+pathFieldText.getText()+"\nTime : "+dateTime.format(formatter));
+							MainApplicationGui.reportsMap.put("Report " + MainApplicationGui.reportsCounter, "~Description : " + CreateStatistics_Menu.result.getDescription()+"\n\n~File path : "+pathFieldText.getText()+"\n\n~Time generated : "+dateTime.format(formatter));
 						}
 					}else
 						PopUp_FileLoad.PopUpLoad("Give valid path");

@@ -33,8 +33,6 @@ public class CreateStatistics_Menu {
 	//Options of the timeUnit_combobox
 	private String[] timeUnitOptions= {"Season" , "Month" , "WeekDay" , "Day Period"};
 	
-	
-	private JTextField textField;
 	private JTextField giveTime;
 	/**
 	 * Launch the application.
@@ -108,9 +106,8 @@ public class CreateStatistics_Menu {
 		giveTime.setColumns(10);
 
 		
-		JComboBox timeUnit_combobox = new JComboBox(timeUnitOptions);
+		JComboBox<String> timeUnit_combobox = new JComboBox<String>(timeUnitOptions);
 		timeUnit_combobox.addActionListener(new ActionListener() {
-			int isSelected = timeUnit_combobox.getSelectedIndex();
 			public void actionPerformed(ActionEvent arg0) { 
 				
 				int selected = timeUnit_combobox.getSelectedIndex();
