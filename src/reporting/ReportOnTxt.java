@@ -24,7 +24,6 @@ public class ReportOnTxt implements IResultReporter,printStatsMap{
 	private String pathfile;
 	
 	
-	
 	@Override
 	public void printMap(HashMap<String, Double> map,String type,PrintWriter outputStream) {
 		outputStream.println(type + "\n--------------\n"); 
