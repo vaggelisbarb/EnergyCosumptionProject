@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. --><project basedir="." default="build" name="2019_2020_&lt;2766&gt;_&lt;2784&gt;_&lt;2821&gt;">
+    <property environment="env"/>
+    <property name="ECLIPSE_HOME" value="../../../../snap/eclipse/40/"/>
+    <property name="junit.output.dir" value="junit"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="11"/>
+    <property name="source" value="11"/>
+    <path id="JUnit 4.libraryclasspath">
+        <pathelement location="${ECLIPSE_HOME}plugins/org.junit_4.12.0.v201504281640/junit.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.hamcrest.core_1.3.0.v20180420-1519.jar"/>
+    </path>
+    <path id="2019_2020_&lt;2766&gt;_&lt;2784&gt;_&lt;2821&gt;.classpath">
+        <pathelement location="bin"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+        <pathelement location="lib/jgoodies-forms-1.8.0-sources.jar"/>
+        <pathelement location="lib/jgoodies-forms-1.8.0.jar"/>
+        <pathelement location="lib/commons-math3-3.6.1.jar"/>
+    </path>
+    <path id="run.dataload.classpath">
+        <path refid="2019_2020_&lt;2766&gt;_&lt;2784&gt;_&lt;2821&gt;.classpath"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+        <pathelement location="lib/jgoodies-forms-1.8.0-sources.jar"/>
+        <pathelement location="lib/jgoodies-forms-1.8.0.jar"/>
+        <pathelement location="lib/commons-math3-3.6.1.jar"/>
+    </path>
+    <path id="run.MainApplicationGui.classpath">
+        <path refid="2019_2020_&lt;2766&gt;_&lt;2784&gt;_&lt;2821&gt;.classpath"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+        <pathelement location="lib/jgoodies-forms-1.8.0-sources.jar"/>
+        <pathelement location="lib/jgoodies-forms-1.8.0.jar"/>
+        <pathelement location="lib/commons-math3-3.6.1.jar"/>
+    </path>
+    <path id="run.ResultManagerTest.classpath">
+        <path refid="2019_2020_&lt;2766&gt;_&lt;2784&gt;_&lt;2821&gt;.classpath"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+        <pathelement location="lib/jgoodies-forms-1.8.0-sources.jar"/>
+        <pathelement location="lib/jgoodies-forms-1.8.0.jar"/>
+        <pathelement location="lib/commons-math3-3.6.1.jar"/>
+    </path>
+    <path id="run.CustomFileChooser.classpath">
+        <path refid="2019_2020_&lt;2766&gt;_&lt;2784&gt;_&lt;2821&gt;.classpath"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+        <pathelement location="lib/jgoodies-forms-1.8.0-sources.jar"/>
+        <pathelement location="lib/jgoodies-forms-1.8.0.jar"/>
+        <pathelement location="lib/commons-math3-3.6.1.jar"/>
+    </path>
+    <path id="run.DataLoaderTest.classpath">
+        <path refid="2019_2020_&lt;2766&gt;_&lt;2784&gt;_&lt;2821&gt;.classpath"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+        <pathelement location="lib/jgoodies-forms-1.8.0-sources.jar"/>
+        <pathelement location="lib/jgoodies-forms-1.8.0.jar"/>
+        <pathelement location="lib/commons-math3-3.6.1.jar"/>
+    </path>
+    <path id="run.MainEngineConfiguration.classpath">
+        <path refid="2019_2020_&lt;2766&gt;_&lt;2784&gt;_&lt;2821&gt;.classpath"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+        <pathelement location="lib/jgoodies-forms-1.8.0-sources.jar"/>
+        <pathelement location="lib/jgoodies-forms-1.8.0.jar"/>
+        <pathelement location="lib/commons-math3-3.6.1.jar"/>
+    </path>
+    <path id="run.New_configuration.classpath">
+        <path refid="2019_2020_&lt;2766&gt;_&lt;2784&gt;_&lt;2821&gt;.classpath"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+        <pathelement location="lib/jgoodies-forms-1.8.0-sources.jar"/>
+        <pathelement location="lib/jgoodies-forms-1.8.0.jar"/>
+        <pathelement location="lib/commons-math3-3.6.1.jar"/>
+    </path>
+    <path id="run.FileChooser.classpath">
+        <path refid="2019_2020_&lt;2766&gt;_&lt;2784&gt;_&lt;2821&gt;.classpath"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+        <pathelement location="lib/jgoodies-forms-1.8.0-sources.jar"/>
+        <pathelement location="lib/jgoodies-forms-1.8.0.jar"/>
+        <pathelement location="lib/commons-math3-3.6.1.jar"/>
+    </path>
+    <target name="init">
+        <mkdir dir="bin"/>
+        <copy includeemptydirs="false" todir="bin">
+            <fileset dir="src">
+                <exclude name="**/*.ucls"/>
+                <exclude name="**/*.useq"/>
+                <exclude name="**/*.java"/>
+                <exclude name="testing/"/>
+                <exclude name="testing/"/>
+                <exclude name="testing/"/>
+            </fileset>
+        </copy>
+        <copy includeemptydirs="false" todir="bin">
+            <fileset dir="images">
+                <exclude name="**/*.ucls"/>
+                <exclude name="**/*.useq"/>
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="clean">
+        <delete dir="bin"/>
+    </target>
+    <target depends="clean" name="cleanall"/>
+    <target depends="build-subprojects,build-project" name="build"/>
+    <target name="build-subprojects"/>
+    <target depends="init" name="build-project">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="bin" includeantruntime="false" source="${source}" target="${target}">
+            <src path="src"/>
+            <src path="images"/>
+            <exclude name="testing/"/>
+            <exclude name="testing/"/>
+            <exclude name="testing/"/>
+            <classpath refid="2019_2020_&lt;2766&gt;_&lt;2784&gt;_&lt;2821&gt;.classpath"/>
+        </javac>
+    </target>
+    <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
+    <target description="copy Eclipse compiler jars to ant lib directory" name="init-eclipse-compiler">
+        <copy todir="${ant.library.dir}">
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </copy>
+        <unzip dest="${ant.library.dir}">
+            <patternset includes="jdtCompilerAdapter.jar"/>
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </unzip>
+    </target>
+    <target description="compile project with Eclipse compiler" name="build-eclipse-compiler">
+        <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
+        <antcall target="build"/>
+    </target>
+    <target name="dataload">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.dataload.classpath"/>
+        </junit>
+    </target>
+    <target name="MainApplicationGui">
+        <java classname="client.MainApplicationGui" failonerror="true" fork="yes">
+            <classpath refid="run.MainApplicationGui.classpath"/>
+        </java>
+    </target>
+    <target name="ResultManagerTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="tests.ResultManagerTest" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.ResultManagerTest.classpath"/>
+        </junit>
+    </target>
+    <target name="CustomFileChooser">
+        <java classname="client.CustomFileChooser" failonerror="true" fork="yes">
+            <classpath refid="run.CustomFileChooser.classpath"/>
+        </java>
+    </target>
+    <target name="DataLoaderTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="tests.DataLoaderTest" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.DataLoaderTest.classpath"/>
+        </junit>
+    </target>
+    <target name="MainEngineConfiguration">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="tests.MainEngineTest" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.MainEngineConfiguration.classpath"/>
+        </junit>
+    </target>
+    <target name="New_configuration">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="tests.StatsTest" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.New_configuration.classpath"/>
+        </junit>
+    </target>
+    <target name="FileChooser">
+        <java classname="client.FileChooser" failonerror="true" fork="yes">
+            <classpath refid="run.FileChooser.classpath"/>
+        </java>
+    </target>
+    <target name="junitreport">
+        <junitreport todir="${junit.output.dir}">
+            <fileset dir="${junit.output.dir}">
+                <include name="TEST-*.xml"/>
+            </fileset>
+            <report format="frames" todir="${junit.output.dir}"/>
+        </junitreport>
+    </target>
+</project>
