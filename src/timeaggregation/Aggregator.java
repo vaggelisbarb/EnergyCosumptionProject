@@ -52,11 +52,6 @@ public class Aggregator implements IAggregator{
 		for(MeasurementRecord record : inputMeasurements) {
 			aggregationResult.add(this.timeUnit, record);
 		}
-		/*aggregationResult.getDetailedResults();
-		aggregationResult.getAggregateMeterLaundry();
-		aggregationResult.getAggregateMeterAC();
-		aggregationResult.getAggregateMeterKitchen();
-		*/
 		return aggregationResult;
 	}
 

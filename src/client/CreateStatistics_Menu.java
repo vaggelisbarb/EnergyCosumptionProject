@@ -177,7 +177,7 @@ public class CreateStatistics_Menu {
 						if(timeUnit_combobox.getSelectedIndex()==0) {
 							if(giveTime.getText().equals("")){
 								result = MainApplicationGui.mainengine.aggregateByTimeUnit(LoadFile_Menu.objCollection,"SEASON" , btnIsSelected, text_field.getText());
-								PopUp_FileLoad.PopUpLoad("Stats created for : " +"Seasonly"+ " with " + btnIsSelected.toUpperCase() + " function");
+								PopUp_FileLoad.PopUpLoad("Stats created for : " +"Seasons"+ " with " + btnIsSelected.toUpperCase() + " function");
 							}else if((giveTime.getText().equals("WINTER") || giveTime.getText().equals("SPRING") || giveTime.getText().equals("SUMMER") || giveTime.getText().equals("AUTUMN")) ){
 								result = MainApplicationGui.mainengine.aggregateByTimeUnit(LoadFile_Menu.objCollection,giveTime.getText() , btnIsSelected, text_field.getText());
 								PopUp_FileLoad.PopUpLoad("Stats : " + giveTime.getText() + " & " + btnIsSelected.toUpperCase() + " function");
@@ -199,7 +199,7 @@ public class CreateStatistics_Menu {
 						}else if (timeUnit_combobox.getSelectedIndex()==2) {
 							if(giveTime.getText().equals("")) {
 								result = MainApplicationGui.mainengine.aggregateByTimeUnit(LoadFile_Menu.objCollection, "dayofweek", btnIsSelected,text_field.getText() );
-								PopUp_FileLoad.PopUpLoad("Stats : " + giveTime.getText() + " & " + btnIsSelected.toUpperCase() + " function");
+								PopUp_FileLoad.PopUpLoad("Stats : " + "Weekly "+ giveTime.getText() + " & " + btnIsSelected.toUpperCase() + " function");
 							}else if(giveTime.getText().equals("MONDAY") || giveTime.getText().equals("TUESDAY") || giveTime.getText().equals("WEDNESDAY") || giveTime.getText().equals("THURSDAY") || (giveTime.getText().equals("FRIDAY") || giveTime.getText().equals("SATURDAY") || giveTime.getText().equals("SUNDAY") )) {
 									result = MainApplicationGui.mainengine.aggregateByTimeUnit(LoadFile_Menu.objCollection, giveTime.getText(), btnIsSelected,text_field.getText() );
 									PopUp_FileLoad.PopUpLoad("Stats :" + giveTime.getText() + " & " + btnIsSelected.toUpperCase() + " function");

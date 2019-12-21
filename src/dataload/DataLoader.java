@@ -35,10 +35,9 @@ public class DataLoader implements ILoader <MeasurementRecord> {
 
 		int count = 0;
 
-		//process the title of the txt
+		//process the title of the txt (counter is not increased cause its not a measurement line)
 		if(hasHeaderLine){
 			String titleLine = inputStream.nextLine();
-			count++;
 		}
 		String line = "";
 		//process the actual rows one by one
@@ -49,7 +48,8 @@ public class DataLoader implements ILoader <MeasurementRecord> {
 			StringTokenizer tokenizer = new StringTokenizer(line, delimeter);
 			if(tokenizer.countTokens() != numFields){
 				System.out.println("Wrong Input format in file " + fileName +". I found " + tokenizer.countTokens() + " values, but I expect " + numFields + " values per row!");
-				// TODO accept only valid lines of input file
+				count --;
+				continue;
 				
 			}
 			String[] tokens =  new String[numFields];
@@ -57,7 +57,7 @@ public class DataLoader implements ILoader <MeasurementRecord> {
 				tokens[i] = tokenizer.nextToken();
 			}
 
-			//ToDo: here add the method that takes the token and forms the object and puts it in the resultList			
+			//method that takes the token and forms the object and puts it in the resultList			
 			int objConstructionErrorCode;
 			objConstructionErrorCode = constructRecordsFromRow(tokens, objCollection);
 			if (objConstructionErrorCode ==0){

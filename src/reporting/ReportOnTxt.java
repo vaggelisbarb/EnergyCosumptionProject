@@ -26,13 +26,14 @@ public class ReportOnTxt implements IResultReporter,printStatsMap{
 	
 	@Override
 	public void printMap(HashMap<String, Double> map,String type,PrintWriter outputStream) {
-		outputStream.println(type + "\n--------------\n"); 
+		outputStream.println(type + "\n--------------"); 
 		if(!map.isEmpty()) {
 			Iterator<Map.Entry<String, Double>> iterator = map.entrySet().iterator();
 			while (iterator.hasNext()) {
 				Map.Entry<String, Double> obj = (Entry<String, Double>) iterator.next();
 				outputStream.println( "* " + obj.getKey() + "\t" + obj.getValue());
 			}
+			outputStream.print("\n");
 		}else
 			System.err.println("Error!! Map with stats is empty");
 	}

@@ -18,24 +18,18 @@ import datamodel.IResult;
 import datamodel.ResultFactory;
 
 /**
- * @author vaggelisbarb
+ * Class Responsible for creating the appropriate report on txt format.
  *
  */
 public class ReportOnHTML implements IResultReporter{
 
-		private IResult resultmanager;
-		private ResultFactory resultfactory;
 		private String description;
 		private String aggFunction;
+		private String pathfile;
 	
-	
-	/**
-		 * 
-		 */
 		public ReportOnHTML() {
 			
 		}
-
 
 
 	/**
@@ -43,8 +37,7 @@ public class ReportOnHTML implements IResultReporter{
 		 * @param description
 		 * @param aggFunction
 		 */
-		public ReportOnHTML(IResult resultmanager, String description, String aggFunction) {
-			this.resultmanager = resultmanager;
+		public ReportOnHTML(String description, String aggFunction) {
 			this.description = description;
 			this.aggFunction = aggFunction;
 		}
@@ -77,7 +70,6 @@ public class ReportOnHTML implements IResultReporter{
 			outputStream.println(header);
 
 			outputStream.println("<h1>" + description +"</h1>");
-			// TODO: <p> avg consumption(watt-hours) over a)Kitchen b)Laundry c)A/C </p>
 			outputStream.println("<p>" + aggFunction + " consumption (watt-hours) over (a) Kitchen, (b) Laundry, (c) A/C " + "</p>");
 			
 			outputStream.println("<h2>"+ "Kitchen" + "</h2>");
@@ -199,7 +191,9 @@ public class ReportOnHTML implements IResultReporter{
 		
 		
 		rasterToHTML(filename, result.getDescription(), rasterKitchen, rasterLaundry,rasterAc, numRowsK, numCols, result.getAggregateFunction());
-		
+		this.description = result.getDescription();
+		this.aggFunction = result.getAggregateFunction();
+		this.pathfile = filename;
 		
 		return 0;
 	}

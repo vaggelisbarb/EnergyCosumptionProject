@@ -69,7 +69,7 @@ public class ResultManager implements IResult{
 			String[] autumnArr = {"9","10","11"};
 			return autumnArr;
 		case "SEASON":
-			String[] seasonArr = {"1","2","3","4","5","6","7","8","9","10","11","12"};
+			String[] seasonArr = {"12","1","2","3","4","5","6","7","8","9","10","11"};
 			return seasonArr;
 		}
 		return null;
@@ -152,7 +152,7 @@ public class ResultManager implements IResult{
 		case "DEC":
 			String[] decArr= {"12"}; 
 			return decArr;		
-		case "MONTHS" :
+		case "MONTH" :
 			String[] monthArr = {"1","2","3","4","5","6","7","8","9","10","11","12"};
 			return monthArr;
 		}
@@ -195,12 +195,12 @@ public class ResultManager implements IResult{
 			ArrayList<MeasurementRecord> list = new ArrayList<MeasurementRecord>();
 			list.add(record); 
 			map.put(unit, list);
-			System.out.println("List with key "+unit +" is 1st time found.Size of new List = " + list.size() );
+			System.out.println("ArrayList with key : "+unit +", is found 1st time.New List is created with size :" + list.size() );
 			return list.size();
 		}else {
 			ArrayList<MeasurementRecord> listFromMap = map.get(unit);
 			listFromMap.add(record);
-			System.out.println("List with key "+unit +" is found with size = " + listFromMap.size() );
+			System.out.println("Arraylist with key : "+unit +", exists in Map with size = " + listFromMap.size() );
 			return listFromMap.size();
 		}
 	}
@@ -294,6 +294,5 @@ public class ResultManager implements IResult{
 	public String getAggregateFunction() {
 		return this.aggFunction;
 	}
-
 
 }

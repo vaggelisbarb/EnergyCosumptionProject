@@ -33,7 +33,6 @@ public class ReportOnMD implements IResultReporter,printStatsMap{
 				Map.Entry<String, Double> obj = (Entry<String, Double>) iterator.next();
 				outputStream.println( "* " + obj.getKey() + "\t" + obj.getValue());
 			}
-			outputStream.println("\n");
 		}else
 			System.err.println("Error!! Map with stats is empty");
 	}
@@ -54,7 +53,9 @@ public class ReportOnMD implements IResultReporter,printStatsMap{
 		outputStream.println(result.getAggregateFunction() + " consumption (watt-hours) over (a) Kitchen, (b) Laundry, (c) A/C\n");
 		
 		printMap(result.getAggregateMeterKitchen(), "Kitchen", outputStream);
+		outputStream.print("\n");
 		printMap(result.getAggregateMeterLaundry(), "Laundry", outputStream);
+		outputStream.print("\n");
 		printMap(result.getAggregateMeterAC(), "A/C", outputStream);
 
 		outputStream.close();
